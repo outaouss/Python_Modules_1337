@@ -1,3 +1,5 @@
+# First Way Bla Recursion Jus Loop -->
+
 def ft_count_harvest_recursive():
     Days = int(input("Days untill harvest: "))
 
@@ -5,18 +7,20 @@ def ft_count_harvest_recursive():
         print(f"Day {count}")
     print("Harvest time!")
 
-def main():
-    ft_count_harvest_recursive()
+# Secone Way B Recursion -->
 
-main()
+def ft_count_harvest_recursive():
+    days = int(input("Days until harvest: "))
 
-# def ft_count_harvest_recursive(n):
-#     if n > 0:
-#         ft_count_harvest_recursive(n - 1)
-#         print(f"Day {n}")
+    def counter(n):
+        if n > 0:
+            counter(n - 1)
+            print(f"Day {n}")
+
+    counter(days)
+    print("Harvest time!")
 
 # def main():
-#     n = int(input("Enter: "))
-#     ft_count_harvest_recursive(n)
+#     ft_count_harvest_recursive()
 
 # main()
