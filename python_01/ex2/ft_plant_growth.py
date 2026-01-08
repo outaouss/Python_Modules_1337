@@ -21,7 +21,7 @@ start_height = Plant_1.height
 print("=== Day 1 ===")
 print(Plant_1.get_info())
 
-# You Can Add The Number of Days u want To Stop :)
+# You Can Add The Number of Days u want To Simulate :)
 days_to_simulate = 6
 
 for _ in range(days_to_simulate):
