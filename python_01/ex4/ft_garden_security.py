@@ -1,29 +1,28 @@
 class SecurePlant:
     def __init__(self, name, height, age):
         self.name = name
-        self.__height = height
-        self.__age = age
+        self.__height = 0
+        self.__age = 0
         print(f"Plant Created: {self.name}")
+        self.set_height(height)
+        self.set_age(age)
 
-    @property
-    def height(self):
+    def get_height(self):
         return self.__height
 
-    @height.setter
-    def height(self, value):
+    def set_height(self, value):
         if value < 0:
-            print(f"\nInvalid operation attempted: height {value}cm [REJECTED]")
+            print(f"\nInvalid operation attempted: "
+                  f"height {value}cm [REJECTED]")
             print("Security: Negative height rejected")
         else:
             self.__height = value
             print(f"Height updated: {value}cm [OK]")
 
-    @property
-    def age(self):
+    def get_age(self):
         return self.__age
 
-    @age.setter
-    def age(self, value):
+    def set_age(self, value):
         if value < 0:
             print(f"\nInvalid operations attempted: "
                   f"age {value} days [REJECTED]")  # Splited Line :)
@@ -39,11 +38,11 @@ class SecurePlant:
 
 print("=== Garden Security System ===")
 
-my_plant = SecurePlant("Rose", -6, 25)
+my_plant = SecurePlant("Rose", 25, 30)
 
-my_plant.height = 25
-my_plant.age = 30
+# my_plant.set_height(25)
+# my_plant.set_age(30)
 
-my_plant.height = -5
+my_plant.set_height(-5)
 
 my_plant.display_status()
