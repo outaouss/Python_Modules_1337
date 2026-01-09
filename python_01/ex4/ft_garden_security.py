@@ -25,14 +25,14 @@ class SecurePlant:
     def set_age(self, value):
         if value < 0:
             print(f"\nInvalid operations attempted: "
-                  f"age {value} days [REJECTED]")  # Splited Line :)
+                  f"age {value} days [REJECTED]")
             print("Security: Negative age rejected")
         else:
             self._age = value
             print(f"Age updated: {self._age} days [OK]")
 
     def display_status(self):
-        print(f"\nCurrent plant: {self.name} "  # Splited Line :)
+        print(f"\nCurrent plant: {self.name} "
               f"({self._height}cm, {self._age} days)")
 
 print("=== Garden Security System ===")

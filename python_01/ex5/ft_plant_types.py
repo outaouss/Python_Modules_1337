@@ -19,7 +19,7 @@ class Tree(Plant):
     
     def produce_shade(self):
         shade = int(self.trunk_diameter * 1.56)
-        print(f"Oak provides {shade} square meters of shade")
+        print(f"{self.name} provides {shade} square meters of shade")
 
 class Vegetable(Plant):
     def __init__(self, name, height, age, harvest_season, nutritional_value):
