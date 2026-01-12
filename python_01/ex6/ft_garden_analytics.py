@@ -2,20 +2,24 @@ class Plant:
     def __init__(self, name, height):
         self.name = name
         self.height = height
-        
+
+
 class FloweringPlant(Plant):
     def __init__(self, name, height, flower_color):
         super().__init__(name, height)
         self.flower_color = flower_color
+
 
 class PrizeFlower(FloweringPlant):
     def __init__(self, name, height, flower_color, prize_points):
         super().__init__(name, height, flower_color)
         self.prize_points = prize_points
 
+
 # |--> Garden Class <--|
 class GardenManager:
     total_gardens = 0
+
     def __init__(self, name):
         self.name = name
         self.plant_list = []
@@ -40,10 +44,13 @@ class GardenManager:
                 elif isinstance(plant, Plant):
                     plant_count += 1
                 total_height += plant.height
-            print(f"\nPlant added: {len(plant_list)}, Total growth: {len(plant_list)}cm")
-            print(f"Plant types: {plant_count} regular, {flower_count} flowering, {prize_count} prize flowers")
-            print(f"\nHeight validation test: {GardenManager.GardenStats.validation_height(10)}")
-    
+            print(f"\nPlant added: {len(plant_list)}, "
+                  f"Total growth: {len(plant_list)}cm")
+            print(f"Plant types: {plant_count} regular, "
+                  f"{flower_count} flowering, {prize_count} prize flowers")
+            print(f"\nHeight validation test: "
+                  f"{GardenManager.GardenStats.validation_height(10)}")
+
     # |--> Adding Plants Methode <--|
     def add_plant(self, plant):
         if GardenManager.GardenStats.validation_height(plant.height):
@@ -51,25 +58,28 @@ class GardenManager:
             print(f"Added {plant.name} to {self.name}'s garden")
         else:
             print("Invalid height, plant rejected")
-    
+
     # |--> Growing Plants Methode <--|
     def grow_plants(self):
-        growth_ammount = 1 # Enter Any Ammount u Want !!!
+        growth_ammount = 1  # Enter Any Ammount u Want !!!
 
         print(f"{self.name} is helping all plants grow...")
         for plant in self.plant_list:
             plant.height += growth_ammount
             print(f"{plant.name} grew {growth_ammount}cm")
-    
+ 
     # |--> Report Display Methode <--|
     def display_report(self):
         print(f"== {self.name}'s Garden Report ==")
         print("Plants in garden:")
         for plant in self.plant_list:
             if isinstance(plant, PrizeFlower):
-                print(f"- {plant.name}: {plant.height}cm, {plant.flower_color} flowers (blooming), Prize points: {plant.prize_points}")
+                print(f"- {plant.name}: {plant.height}cm, "
+                      f"{plant.flower_color} flowers (blooming), "
+                      f"Prize points: {plant.prize_points}")
             elif isinstance(plant, FloweringPlant):
-                print(f"- {plant.name}: {plant.height}cm, {plant.flower_color} (blooming)")
+                print(f"- {plant.name}: {plant.height}cm,"
+                      f" {plant.flower_color} (blooming)")
             elif isinstance(plant, Plant):
                 print(f"- {plant.name}: {plant.height}cm")
         GardenManager.GardenStats.generate_report(self.plant_list)
