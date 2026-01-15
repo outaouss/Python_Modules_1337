@@ -112,26 +112,27 @@ class GardenManager:
         print(f"Total gardens managed: {cls.total_gardens}")
 
 
-# Managers
-alice = GardenManager("Alice")
-bob = GardenManager("Bob")
+if __name__ == "__main__":
+    # Managers
+    alice = GardenManager("Alice")
+    bob = GardenManager("Bob")
 
-# Plants
-oak = Plant("Oak Tree", 100)
-rose = FloweringPlant("Rose", 25, "red")
-sunflower = PrizeFlower("Sunflower", 50, "yellow", 40)
+    # Plants
+    oak = Plant("Oak Tree", 100)
+    rose = FloweringPlant("Rose", 25, "red")
+    sunflower = PrizeFlower("Sunflower", 50, "yellow", 40)
 
-# System Demo
-print("=== Garden Management System Demo ===")
+    # System Demo
+    print("=== Garden Management System Demo ===")
 
-print()
-alice.add_plant(oak)
-alice.add_plant(rose)
-alice.add_plant(sunflower)
+    print()
+    alice.add_plant(oak)
+    alice.add_plant(rose)
+    alice.add_plant(sunflower)
 
-print()
-alice.grow_plants()
+    print()
+    alice.grow_plants()
 
-print()
-alice.display_report()
-GardenManager.create_garden_network([alice, bob])
+    print()
+    alice.display_report()
+    GardenManager.create_garden_network([alice, bob])
