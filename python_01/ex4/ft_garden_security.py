@@ -1,8 +1,8 @@
 class SecurePlant:
     def __init__(self, name, height, age):
         self.name = name
-        self._height = 0
-        self._age = 0
+        self._height = height
+        self._age = age
         print(f"Plant Created: {self.name}")
         self.set_height(height)
         self.set_age(age)
@@ -33,12 +33,12 @@ class SecurePlant:
 
     def display_status(self):
         print(f"\nCurrent plant: {self.name} "
-              f"({self._height}cm, {self._age} days)")
+              f"({self.get_height()}cm, {self.get_age()} days)")
 
-print("=== Garden Security System ===")
 
-my_plant = SecurePlant("Rose", 25, 30)
+if __name__ == "__main__":
+    print("=== Garden Security System ===")
 
-my_plant.set_height(-5)
-
-my_plant.display_status()
+    my_plant = SecurePlant("Rose", 25, 30)
+    my_plant.set_height(-5)
+    my_plant.display_status()

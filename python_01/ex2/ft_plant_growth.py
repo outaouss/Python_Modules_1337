@@ -1,35 +1,40 @@
+# |--> Class For Plant <--|
 class Plant:
     def __init__(self, name, height, age_old):
         self.name = name
         self.height = height
         self.age_old = age_old
 
+    # |--> Methode of +1 Growing Plant <--|
     def grow(self):
         self.height += 1
 
+    # |--> Methode of plant age +1 <--|
     def age(self):
         self.age_old += 1
 
+    # |--> Methode of getting plant info <--|
     def get_info(self):
         return f"{self.name}: {self.height}cm, {self.age_old} days old"
 
 
-Plant_1 = Plant("Rose", 25, 30)
+if __name__ == "__main__":
+    Plant_1 = Plant("Rose", 25, 30)
 
-start_height = Plant_1.height
+    start_height = Plant_1.height
 
-print("=== Day 1 ===")
-print(Plant_1.get_info())
+    print("=== Day 1 ===")
+    print(Plant_1.get_info())
 
-# You Can Add The Number of Days u want To Simulate :)
-days_to_simulate = 6
+    # |--> You Can Add The Number of Days you want To Simulate <--|
+    days_to_simulate = 6
 
-for _ in range(days_to_simulate):
-    Plant_1.grow()
-    Plant_1.age()
+    for _ in range(days_to_simulate):
+        Plant_1.grow()
+        Plant_1.age()
 
-print(f"=== Day {days_to_simulate + 1} ===")
-print(Plant_1.get_info())
+    print(f"=== Day {days_to_simulate + 1} ===")
+    print(Plant_1.get_info())
 
-total_height = Plant_1.height - start_height
-print(f"Growth this week: +{total_height}cm")
+    total_height = Plant_1.height - start_height
+    print(f"Growth this week: +{total_height}cm")
