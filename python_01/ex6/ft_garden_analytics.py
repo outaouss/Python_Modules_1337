@@ -22,10 +22,12 @@ class PrizeFlower(FloweringPlant):
 class GardenManager:
     '''Class responsible for Tracks all gardens and shared stats'''
     total_gardens = 0
+    global_growth = 0
 
     def __init__(self, name):
         '''Sets manager name and starts an empty plant list.'''
         self.name = name
+        self.growth_amm = 1
         self.plant_list = []
         GardenManager.total_gardens += 1
 
@@ -43,6 +45,8 @@ class GardenManager:
             plant_count = 0
             flower_count = 0
             prize_count = 0
+            # Responsible For Growth Validation
+            val = GardenManager.global_growth
             for plant in plant_list:
                 if isinstance(plant, PrizeFlower):
                     prize_count += 1
@@ -52,11 +56,11 @@ class GardenManager:
                     plant_count += 1
                 total_height += plant.height
             print(f"\nPlant added: {len(plant_list)}, "
-                  f"Total growth: {len(plant_list)}cm")
+                  f"Total growth: {GardenManager.global_growth}cm")
             print(f"Plant types: {plant_count} regular, "
                   f"{flower_count} flowering, {prize_count} prize flowers")
             print(f"\nHeight validation test: "
-                  f"{GardenManager.GardenStats.validation_height(10)}")
+                  f"{GardenManager.GardenStats.validation_height(val)}")
 
     def add_plant(self, plant):
         '''Validates height then adds plant to inventory.'''
@@ -68,11 +72,12 @@ class GardenManager:
 
     def grow_plants(self):
         '''Increases every plant's height by a set amount.'''
-        growth_ammount = 1  # Enter Any Ammount You Want !!!
+        growth_ammount = 1
 
         print(f"{self.name} is helping all plants grow...")
         for plant in self.plant_list:
             plant.height += growth_ammount
+            GardenManager.global_growth += growth_ammount
             print(f"{plant.name} grew {growth_ammount}cm")
 
     def display_report(self):

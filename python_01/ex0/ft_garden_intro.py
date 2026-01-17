@@ -1,4 +1,5 @@
 def ft_garden_intro():
+    '''This Function used to Display an Intro of A Garden'''
     name = "Rose"
     height = "25cm"
     age = "30 Days"

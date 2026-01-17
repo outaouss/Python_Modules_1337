@@ -1,4 +1,5 @@
 class SecurePlant:
+    '''Blueprint for a secure garden plant'''
     def __init__(self, name, height, age):
         self.name = name
         self._height = height
@@ -8,9 +9,11 @@ class SecurePlant:
         self.set_age(age)
 
     def get_height(self):
+        '''This is A Methode To Get The Height of A Plant'''
         return self._height
 
     def set_height(self, value):
+        '''This is A Methode To Set A Value to The Height if Valid'''
         if value < 0:
             print(f"\nInvalid operation attempted: "
                   f"height {value}cm [REJECTED]")
@@ -20,9 +23,11 @@ class SecurePlant:
             print(f"Height updated: {value}cm [OK]")
 
     def get_age(self):
+        '''This is A Methode To Get The Age of A Plant'''
         return self._age
 
     def set_age(self, value):
+        '''This is A Methode To Set A Value to The Age if Valid'''
         if value < 0:
             print(f"\nInvalid operations attempted: "
                   f"age {value} days [REJECTED]")
@@ -32,6 +37,8 @@ class SecurePlant:
             print(f"Age updated: {self._age} days [OK]")
 
     def display_status(self):
+        '''This Methode Used to Display The Infos of A Plant By Getting The
+            Height And The Age of It'''
         print(f"\nCurrent plant: {self.name} "
               f"({self.get_height()}cm, {self.get_age()} days)")
 
