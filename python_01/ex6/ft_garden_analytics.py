@@ -111,7 +111,7 @@ class GardenManager:
         score_entries = []
         for manager in managers:
             current_score = manager.get_score()
-            score_entries.append(f"{manager.name}: {current_score}")        
+            score_entries.append(f"{manager.name}: {current_score}")
         scores_string = ", ".join(score_entries)
         print(f"Garden scores - {scores_string}")
         print(f"Total gardens managed: {cls.total_gardens}")
