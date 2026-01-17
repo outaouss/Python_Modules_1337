@@ -45,7 +45,7 @@ class GardenManager:
             plant_count = 0
             flower_count = 0
             prize_count = 0
-            # Responsible For Growth Validation
+            # --> [ Val ] <-- Responsible For Growth Validation
             val = GardenManager.global_growth
             for plant in plant_list:
                 if isinstance(plant, PrizeFlower):
