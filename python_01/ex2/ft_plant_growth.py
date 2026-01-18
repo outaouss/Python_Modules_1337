@@ -1,21 +1,21 @@
 class Plant:
     '''Blueprint for a basic garden plant'''
-    def __init__(self, name, height, age_old):
+    def __init__(self, name: str, height: int, age_attr: int) -> None:
         self.name = name
         self.height = height
-        self.age_old = age_old
+        self.age_attr = age_attr
 
-    def grow(self):
+    def grow(self) -> None:
         '''This Methode Created to Make A Plant Growing By [ x ]'''
         self.height += 1  # x
 
-    def age(self):
+    def age(self) -> None:
         '''This Methode Created to Upgrade The Age of A Plant By [ x ]'''
-        self.age_old += 1  # x
+        self.age_attr += 1  # x
 
-    def get_info(self):
+    def get_info(self) -> None:
         '''Methode of Getting A Plant Info'''
-        return f"{self.name}: {self.height}cm, {self.age_old} days old"
+        return f"{self.name}: {self.height}cm, {self.age_attr} days old"
 
 
 if __name__ == "__main__":
@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
     days_to_simulate = 6  # You Can Use Any Number of Days To Simulate
 
-    for _ in range(days_to_simulate):
+    for i in range(days_to_simulate):
         Plant_1.grow()
         Plant_1.age()
 
