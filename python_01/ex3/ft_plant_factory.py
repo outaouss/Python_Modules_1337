@@ -1,10 +1,10 @@
 class Plant:
     '''Blueprint for a basic garden plant'''
-    def __init__(self, name: str, starting_height: int,
-                 starting_age: int) -> None:
+    def __init__(self, name: str, height: int,
+                 age: int) -> None:
         self.name = name
-        self.starting_height = starting_height
-        self.starting_age = starting_age
+        self.height = height
+        self.age = age
 
 
 # A list containing instances of the Plant class
@@ -28,7 +28,7 @@ if __name__ == "__main__":
         return count
 
     for p in plant_data:
-        print(f"Created: {p.name} ({p.starting_height}cm, "
-              f"{p.starting_age} days)")
+        print(f"Created: {p.name} ({p.height}cm, "
+              f"{p.age} days)")
 
     print(f"\nTotal plants created: {get_plant_length(plant_data)}")

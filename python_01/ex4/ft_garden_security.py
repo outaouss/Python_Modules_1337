@@ -41,7 +41,10 @@ class SecurePlant:
     def display_status(self) -> None:
         '''This Methode Used to Display The Infos of A Plant By Getting The
             Height And The Age of It'''
-        if self._age is not None or self._height is not None:
+
+        if self._age is None or self._height is None:
+            pass
+        else:
             print(f"\nCurrent plant: {self.name} "
                   f"({self.get_height()}cm, {self.get_age()} days)")
 

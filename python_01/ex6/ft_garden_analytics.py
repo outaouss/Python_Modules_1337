@@ -37,20 +37,19 @@ class GardenManager:
 
     class GardenStats:
         '''Nested helper for plant data and validation.'''
-        @staticmethod
         def validation_height(height: int) -> bool:
             '''Static method to ensure plant height is a non-negative value.'''
             return height >= 0
+        validation_height = staticmethod(validation_height)
 
-        @staticmethod
         def get_length(ft_list: list) -> int:
             '''Methode To Calculate The Length of A List'''
             count: int = 0
             for _ in ft_list:
                 count += 1
             return count
+        get_length = staticmethod(get_length)
 
-        @staticmethod
         def generate_report(plant_list: list) -> None:
             '''Counts types and calculates total heights.'''
             total_height = 0
@@ -77,6 +76,7 @@ class GardenManager:
                   f"{flower_count} flowering, {prize_count} prize flowers")
             print(f"\nHeight validation test: "
                   f"{GardenManager.GardenStats.validation_height(val)}")
+        generate_report = staticmethod(generate_report)
 
     def add_plant(self, plant: Plant, flag: int) -> None:
         '''Validates height then adds plant to inventory.'''
@@ -122,7 +122,6 @@ class GardenManager:
                 total += plant.prize_points
         return total
 
-    @classmethod
     def create_garden_network(cls, managers: list) -> None:
         '''Combines scores from all managers in the system'''
         scores_string = ""
@@ -137,6 +136,7 @@ class GardenManager:
 
         print(f"Garden scores - {scores_string}")
         print(f"Total gardens managed: {cls.total_gardens}")
+    create_garden_network = classmethod(create_garden_network)
 
 
 if __name__ == "__main__":

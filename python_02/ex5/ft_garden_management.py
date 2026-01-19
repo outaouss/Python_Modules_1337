@@ -57,11 +57,14 @@ class GardenManager:
 def test_garden_management():
     print("=== Garden Management System ===\n")
     manager = GardenManager()
-
+    plants = [
+        "tomato",
+        "lettuce",
+        "",
+    ]
     print("Adding plants to garden...")
-    manager.add_plants("tomato")
-    manager.add_plants("lettuce")
-    manager.add_plants("")
+    for plant in plants:
+        manager.add_plants(plant)
     print()
 
     print("Watering plants...")
@@ -81,6 +84,7 @@ def test_garden_management():
         raise GardenError("Not enough water in tank")
     except GardenError as e:
         print(f"Caught GardenError: {e}")
+    finally:
         print("System recovered and continuing...")
 
     print("\nGarden managemant system test complete!")
