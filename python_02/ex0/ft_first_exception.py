@@ -1,4 +1,6 @@
 def check_temperature(temp_str):
+    '''This Function sed to Validates a temperature string and checks
+    if it is safe for plants.'''
     print(f"Testing temperature: {temp_str}")
 
     try:
@@ -15,6 +17,8 @@ def check_temperature(temp_str):
 
 
 def test_temperature_input():
+    '''This function used to Run a series of test cases 
+    to verify the temperature checker logic'''
     print("=== Garden Temperature Checker ===")
     print()
     check_temperature("25")

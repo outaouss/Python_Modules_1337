@@ -1,4 +1,6 @@
-def garden_operations():
+def garden_operations() -> None:
+    '''Simulates various common Python errors to
+    demonstrate exception handling'''
     try:
         print("Testing ValueError...")
         int("abc")
@@ -20,7 +22,7 @@ def garden_operations():
     try:
         print("Testing KeyError...")
         x = {"vegetable": "potato"}
-        print(x["missing_plant"])
+        print(x["missing\\_plant"])
     except KeyError:
         print("Caught KeyError: 'missing\\_plant'")
 
@@ -31,10 +33,12 @@ def garden_operations():
         print("Caught an error, but program continues!\n")
 
 
-def test_error_types():
+def test_error_types() -> None:
+    '''Entry point for the error types demo'''
     print("=== Garden Error Types Demo ===\n")
     garden_operations()
     print("All error types tested successfully!")
 
 
-test_error_types()
+if __name__ == "__main__":
+    test_error_types()
