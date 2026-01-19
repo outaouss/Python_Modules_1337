@@ -27,7 +27,7 @@ def test_plant_checks():
         ("Good Values", ("tomato", 5, 5)),
         ("Empty plant name", ("", 5, 5)),
         ("Bad water level", ("tomato", 15, 6)),
-        ("Bad sunlight hours", ("tomato", 5, 0))
+        ("Bad sunlight hours", ("tomato", 5, 0)),
     ]
 
     for test, params in tests_conditions:

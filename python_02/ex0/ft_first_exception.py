@@ -1,4 +1,4 @@
-def check_temperature(temp_str):
+def check_temperature(temp_str: str) -> None:
     '''This Function sed to Validates a temperature string and checks
     if it is safe for plants.'''
     print(f"Testing temperature: {temp_str}")
@@ -16,16 +16,19 @@ def check_temperature(temp_str):
         print(f"Error: {temp_str} is not a valid number\n")
 
 
-def test_temperature_input():
-    '''This function used to Run a series of test cases 
+def test_temperature_input() -> None:
+    '''This function used to Run a series of test cases
     to verify the temperature checker logic'''
-    print("=== Garden Temperature Checker ===")
-    print()
+
+    print("=== Garden Temperature Checker ===\n")
+
     check_temperature("25")
     check_temperature("abc")
     check_temperature("100")
     check_temperature("-50")
+
     print("All tests completed - program didn't crash!")
 
 
-test_temperature_input()
+if __name__ == "__main__":
+    test_temperature_input()
