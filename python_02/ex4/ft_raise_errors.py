@@ -2,7 +2,7 @@ def check_plant_health(plant_name: str, water_level: int,
                        sunlight_hours: int) -> str:
     '''Validates plant conditions and raises
     ValueError if limits are exceeded'''
-    if plant_name == "":
+    if plant_name == "" or plant_name is None:
         raise ValueError("Plant name cannot be empty!")
 
     if water_level < 1:

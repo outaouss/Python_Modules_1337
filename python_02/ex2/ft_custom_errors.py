@@ -18,45 +18,48 @@ def water_checker(level: int) -> bool:
     return level <= 0
 
 
-def plant_health(wilting: int) -> None:
+def plant_health(wilting: int, name: str) -> None:
     '''Checks the health status of a plant based on a wilting factor'''
     if wilting_checker(wilting):
-        raise PlantError("The tomato plant is wilting!")
+        raise PlantError(f"The {name} plant is wilting!")
     else:
-        print("The tomato plant is in good health!")
+        print(f"The {name} plant is in good health!")
 
 
-def water_level(tank_validation: int) -> None:
+def water_level(tank_validation: int, name: str) -> None:
     '''Validates the current water level in the garden tank'''
     if water_checker(tank_validation):
-        raise WaterError("Not enough water in the tank!")
+        raise WaterError(f"Not enough water in the {name}!")
     else:
-        print("There is enough water in the tank!")
+        print(f"There is enough water in the {name}!")
 
 
 if __name__ == "__main__":
     health_val = -15  # you can change it to check the catch error
     water_level_val = -15  # you can change it to check the catch error
 
+    plant_name = "tomato"
+    storage = "tank"
+
     print("=== Custom Garden Errors Demo ===")
 
     print("\nTesting PlantError...")
     try:
-        plant_health(health_val)
+        plant_health(health_val, plant_name)
     except PlantError as e:
         print(f"Caught PlantError: {e}")
 
     print("\nTesting WaterError...")
     try:
-        water_level(water_level_val)
+        water_level(water_level_val, storage)
     except WaterError as e:
         print(f"Caught WaterError: {e}")
 
     print("\nTesting catching all garden errors...")
-    for test, condition in [(plant_health, health_val),
-                            (water_level, water_level_val)]:
+    for test, condition, name in [(plant_health, health_val, plant_name),
+                                  (water_level, water_level_val, storage)]:
         try:
-            test(condition)
+            test(condition, name)
         except GardenError as e:
             print(f"Caught a garden error: {e}")
     print("\n All custom error types work correctly!")

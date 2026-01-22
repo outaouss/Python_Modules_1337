@@ -4,14 +4,14 @@ def garden_operations() -> None:
     try:
         print("Testing ValueError...")
         int("abc")
-    except ValueError:
-        print("Caught ValueError: invalid literal for int()\n")
+    except ValueError as e:
+        print(f"Caught ValueError: {e}\n")
 
     try:
         print("Testing ZeroDivisionError...")
         1 / 0
-    except ZeroDivisionError:
-        print("Caught ZeroDivisionError: division by zero\n")
+    except ZeroDivisionError as e:
+        print(f"Caught ZeroDivisionError: {e}\n")
 
     try:
         print("Testing FileNotFoundError...")
@@ -22,9 +22,9 @@ def garden_operations() -> None:
     try:
         print("Testing KeyError...")
         x = {"vegetable": "potato"}
-        print(x["missing\\_plant"])
-    except KeyError:
-        print("Caught KeyError: 'missing\\_plant'")
+        print(x["missing_plant"])
+    except KeyError as e:
+        print(f"Caught KeyError: {e}")
 
     try:
         print("\nTesting multiple errors together...")

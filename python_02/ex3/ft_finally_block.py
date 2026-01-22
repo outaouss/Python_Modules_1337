@@ -3,7 +3,9 @@ def water_plants(plant_list: list):
     print("Opening watering system")
     try:
         for plant in plant_list:
-            if plant is None or plant == "" or type(plant) is not str:
+            if plant is None or type(plant) is not str:
+                raise ValueError(f"Cannot water {plant} - invalid plant!")
+            elif plant == "":
                 raise ValueError("Cannot water None - invalid plant!")
             print("Watering ", plant)
     except ValueError as e:
