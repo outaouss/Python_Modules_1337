@@ -1,3 +1,4 @@
+
 class GardenError(Exception):
     pass
 
@@ -26,9 +27,11 @@ class GardenManager:
             print("There is enough water in the tank!")
     water_level = staticmethod(water_level)
 
-    def add_plant(self, plant: list) -> None:
+    def add_plant(self, plant: list = None) -> None:
         try:
-            if plant[0] == "" or plant[0] is None or type(plant[0]) is not str:
+            if not plant:
+                raise ValueError("no plant given")
+            if plant[0] == "" or plant[0] is None:
                 raise ValueError("Plant name cannot be empty!")
             else:
                 self.plant_list += [plant]
@@ -82,11 +85,11 @@ def test_garden_management():
     ]
     print("Adding plants to garden...")
     for plant in plants:
-        manager.add_plant(plant)
+        manager.add_plant()
     print()
 
     print("Watering plants...")
-    manager.water_plants()
+    manager.water_plants(plant)
     print()
 
     print("Checking plant health...")

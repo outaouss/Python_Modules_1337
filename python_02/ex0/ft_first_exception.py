@@ -1,19 +1,23 @@
-def check_temperature(temp_str: str) -> None:
-    '''This Function sed to Validates a temperature string and checks
-    if it is safe for plants.'''
+def check_temperature(temp_str: str = None) -> None:
     print(f"Testing temperature: {temp_str}")
-
     try:
+        if temp_str is None:
+            raise ValueError("No Temperature Input Provided")
+
         temp = int(temp_str)
-        if (temp >= 0 and temp <= 40):
-            print(f"Temperature {temp}°C is perfect for plants!\n")
-            return temp
-        elif temp > 40:
-            print(f"Error: {temp}°C is too hot for plants (max 40°C)\n")
+
+        if temp > 40:
+            raise ValueError(f"{temp}°C is too hot (max 40°C)")
+        elif temp < 0:
+            raise ValueError(f"{temp}°C is too cold (min 0°C)")
         else:
-            print(f"Error: {temp}°C is too cold for plants (min 0°C)\n")
-    except ValueError:
-        print(f"Error: {temp_str} is not a valid number\n")
+            print(f"Temperature {temp}°C is perfect for plants!\n")
+
+    except ValueError as e:
+        if "invalid literal" in str(e):
+            print(f"Error: '{temp_str}' is not a valid number\n")
+        else:
+            print(f"Error: {e}\n")
 
 
 def test_temperature_input() -> None:

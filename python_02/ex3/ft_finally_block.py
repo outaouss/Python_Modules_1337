@@ -18,21 +18,24 @@ def test_watering_system():
     '''Demonstrates watering system success and failure cases'''
     print("=== Garden Watering System ===")
 
-    print("\nTesting normal watering...")
-    plants = [
-        "tomato",
-        "lettuce",
-        "carrots",
-    ]
-    water_plants(plants)
-    print("\nTesting with error...")
-    plants_with_errors = [
-        "tomato",
-        None,
-    ]
-    water_plants(plants_with_errors)
-
-    print("\nCleanup always happens, even with errors!")
+    try:
+        print("\nTesting normal watering...")
+        plants = [
+            "tomato",
+            "lettuce",
+            "carrots",
+        ]
+        water_plants(plants)
+        print("\nTesting with error...")
+        plants_with_errors = [
+            "tomato",
+            None,
+        ]
+        water_plants(plants_with_errors)
+    except (ValueError, ZeroDivisionError):
+        print("Error Occured While Starting Watering !!!")
+    finally:
+        print("\nCleanup always happens, even with errors!")
 
 
 if __name__ == "__main__":

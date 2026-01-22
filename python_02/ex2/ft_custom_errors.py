@@ -11,10 +11,12 @@ class WaterError(GardenError):
 
 
 def wilting_checker(value: int) -> bool:
+    '''Methode That Return True or False For The Plant Wilting Check'''
     return value < 0
 
 
 def water_checker(level: int) -> bool:
+    '''Methode That Return True or False For The Storage of Water'''
     return level <= 0
 
 
@@ -62,4 +64,4 @@ if __name__ == "__main__":
             test(condition, name)
         except GardenError as e:
             print(f"Caught a garden error: {e}")
-    print("\n All custom error types work correctly!")
+    print("\nAll custom error types work correctly!")
