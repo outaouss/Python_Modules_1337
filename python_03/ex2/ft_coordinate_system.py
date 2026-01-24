@@ -1,4 +1,3 @@
-# import sys
 import math
 
 
@@ -106,4 +105,3 @@ if __name__ == "__main__":
         unpacking(x)
     except Exception:
         print("Error: Empty Parametre !!!")
-# create_position()
