@@ -85,23 +85,23 @@ def unpacking(list_coordinates: tuple = None) -> None:
 
 
 if __name__ == "__main__":
-    print("=== Game Coordinate System ===\n")
-
-    invalid = "abc,def,ghi"
-    valid_1 = "10,20,5"
-    valid_2 = "3,4,0"
-
-    create_position(valid_1)
-    print()
-
-    parsing_cordinates(valid_2)
-    print()
-
-    print(f'Parsing invalid coordinates: "{invalid}"')
-    create_position(invalid)
-
-    x = create_tuple(valid_2)
     try:
+        print("=== Game Coordinate System ===\n")
+
+        invalid = "abc,def,ghi"
+        valid_1 = "10,20,5"
+        valid_2 = "3,4,0"
+
+        create_position(valid_1)
+        print()
+
+        parsing_cordinates(valid_2)
+        print()
+
+        print(f'Parsing invalid coordinates: "{invalid}"')
+        create_position(invalid)
+
+        x = create_tuple(valid_2)
         unpacking(x)
-    except Exception:
-        print("Error: Empty Parametre !!!")
+    except Exception as e:
+        print("Error: ", e)
