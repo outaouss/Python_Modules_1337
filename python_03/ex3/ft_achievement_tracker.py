@@ -66,5 +66,8 @@ def achievemant_analytics(total: tuple) -> None:
 
 
 if __name__ == "__main__":
-    total = achievemant_trucker()
-    achievemant_analytics(total)
+    try:
+        total = achievemant_trucker()
+        achievemant_analytics(total)
+    except Exception as e:
+        print(e)

@@ -32,4 +32,7 @@ def score_analytics() -> None:
 
 
 if __name__ == "__main__":
-    score_analytics()
+    try:
+        score_analytics()
+    except Exception as e:
+        print(e)

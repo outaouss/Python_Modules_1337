@@ -19,4 +19,7 @@ def command_quest():
 
 
 if __name__ == "__main__":
-    command_quest()
+    try:
+        command_quest()
+    except Exception as e:
+        print(e)

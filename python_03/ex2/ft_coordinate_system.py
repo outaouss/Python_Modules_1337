@@ -1,7 +1,7 @@
 import math
 
 
-def create_tuple(pos_str: str = None) -> tuple | str:
+def create_tuple(pos_str: str = None) -> None | tuple | str:
     try:
         if pos_str is None:
             print("Error: Empty Parametre !!!")
@@ -12,8 +12,8 @@ def create_tuple(pos_str: str = None) -> tuple | str:
             clean_num = int(pos)
             num += [clean_num]
         return tuple(num)
-    except (ValueError, AttributeError, TypeError):
-        return "Error While Creating A Tuple"
+    except Exception as e:
+        return f"Error While Creating A Tuple\nError Message: {e}"
 
 
 def create_position(pos_str: str = None) -> None:
@@ -104,4 +104,4 @@ if __name__ == "__main__":
         x = create_tuple(valid_2)
         unpacking(x)
     except Exception as e:
-        print("Error: ", e)
+        print(e)
