@@ -46,22 +46,22 @@ def data_base() -> dict:
 
 def list_comprehension(player_table: dict) -> None:
     print("=== List Comprehension Examples ===")
-    high_score = []
-    score_doubled = []
-    active_players = []
+    high_score = [
+        player['name'] for player in player_table['players']
+        if player['score'] > 2000]
+    score_doubled = [
+        player['score'] * 2 for player
+        in player_table['players']]
+    active_players = [
+        player['name'] for player in player_table['players']
+        if player['status'] == 'active']
 
-    for player in player_table['players']:
-        if player['score'] > 2000:
-            high_score += [player['name']]
-        if player['status'] == 'active':
-            active_players += [player['name']]
-        score_doubled += [player['score'] * 2]
     print(f"High scorers (>2000): {high_score}")
     print(f"Scores doubled: {score_doubled}")
     print(f"Active players: {active_players}")
 
 
-def dict_comprhension(player_table: dict):
+def dict_comprhension(player_table: dict) -> None:
     print("\n=== Dict Comprehension Examples ===")
 
     player_scores = {
@@ -80,11 +80,45 @@ def dict_comprhension(player_table: dict):
     }
 
     achiv_counts = {
-        ''
+        player['name']: len(player['achi'])
+        for player in player_table['players']
     }
     print("Player scores:", player_scores)
     print("Score categories:", scores_categories)
     print("Achievement counts:", achiv_counts)
+
+
+def set_comprehension(player_table: dict) -> None:
+    print("\n=== Set Comprehension Examples ===")
+
+    unique_player = set(player['name'] for player in player_table['players'])
+    unique_achiv = set(one for player in player_table['players']
+                       for one in player['achi'])
+    active_regions = set(player['region'] for player in player_table['players'])
+
+    print("Unique players:", unique_player)
+    print("Unique achievemants:", unique_achiv)
+    print("Active regions:", active_regions)
+
+
+def combined_analys(player_table: dict) -> None:
+    print("\n=== Combined Analysis ===")
+
+    total_players = [player['name'] for player in player_table['players']]
+    unique_achive = set([one for player in player_table['players']
+              for one in player['achi']])
+    average_score = [sum(player['score'] for player
+                         in player_table['players']) / len(total_players)]
+
+    top_score = [max(player['score'] for player in player_table['players'])]
+    best_player = [player for player in player_table['players']
+                   if player['score'] == top_score[0]]
+
+    print("Total players:", len(total_players))
+    print("Total unique achievemants:", len(unique_achive))
+    print("Average score:", average_score[0])
+    print(f"Top performer: {best_player[0]['name']} ({best_player[0]['score']} points, "
+          f"{len(best_player[0]['achi'])} achievements)")
 
 
 if __name__ == "__main__":
@@ -93,5 +127,7 @@ if __name__ == "__main__":
         data = data_base()
         list_comprehension(data)
         dict_comprhension(data)
+        set_comprehension(data)
+        combined_analys(data)
     except Exception as e:
         print(e)
