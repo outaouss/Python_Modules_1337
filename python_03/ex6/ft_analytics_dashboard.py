@@ -106,7 +106,7 @@ def combined_analys(player_table: dict) -> None:
 
     total_players = [player['name'] for player in player_table['players']]
     unique_achive = set([one for player in player_table['players']
-              for one in player['achi']])
+                         for one in player['achi']])
     average_score = [sum(player['score'] for player
                          in player_table['players']) / len(total_players)]
 
@@ -117,7 +117,8 @@ def combined_analys(player_table: dict) -> None:
     print("Total players:", len(total_players))
     print("Total unique achievemants:", len(unique_achive))
     print("Average score:", average_score[0])
-    print(f"Top performer: {best_player[0]['name']} ({best_player[0]['score']} points, "
+    print(f"Top performer: {best_player[0]['name']} "
+          f"({best_player[0]['score']} points, "
           f"{len(best_player[0]['achi'])} achievements)")
 
 
