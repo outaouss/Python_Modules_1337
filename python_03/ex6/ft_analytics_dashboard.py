@@ -94,7 +94,8 @@ def set_comprehension(player_table: dict) -> None:
     unique_player = set(player['name'] for player in player_table['players'])
     unique_achiv = set(one for player in player_table['players']
                        for one in player['achi'])
-    active_regions = set(player['region'] for player in player_table['players'])
+    active_regions = set(player['region'] for player
+                         in player_table['players'])
 
     print("Unique players:", unique_player)
     print("Unique achievemants:", unique_achiv)
