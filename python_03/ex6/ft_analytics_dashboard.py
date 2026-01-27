@@ -1,4 +1,4 @@
-def data_base() -> dict:
+def data_base() -> dict | None:
     data = {
         'players': [
             {
@@ -41,6 +41,17 @@ def data_base() -> dict:
             },
         ],
     }
+    try:
+        for player in data['players']:
+            if player['score']:
+                int(player['score'])
+            if player['score'] is None:
+                print("Error: Score Cannot Be 'None' !!!")
+                return None
+
+    except Exception:
+        print("Score Must Be 'integer' !!!")
+        return None
     return data
 
 
@@ -125,11 +136,12 @@ def combined_analys(player_table: dict) -> None:
 
 if __name__ == "__main__":
     try:
-        print("=== Game Analytics Dashboard ===\n")
         data = data_base()
-        list_comprehension(data)
-        dict_comprhension(data)
-        set_comprehension(data)
-        combined_analys(data)
+        if data:
+            print("=== Game Analytics Dashboard ===\n")
+            list_comprehension(data)
+            dict_comprhension(data)
+            set_comprehension(data)
+            combined_analys(data)
     except Exception as e:
         print(e)
