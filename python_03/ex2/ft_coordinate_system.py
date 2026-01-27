@@ -75,9 +75,7 @@ def parsing_cordinates(pos_str: str = None) -> None:
 
 
 def unpacking(list_coordinates: tuple = None) -> None:
-    x = list_coordinates[0]
-    y = list_coordinates[1]
-    z = list_coordinates[2]
+    x, y, z = list_coordinates
 
     print("\nUnpacking demonstration:")
     print(f"Player at x={x}, y={y}, z={z}")

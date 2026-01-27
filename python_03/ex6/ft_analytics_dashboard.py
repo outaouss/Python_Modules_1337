@@ -1,5 +1,5 @@
 def data_base() -> dict:
-    infos = {
+    data = {
         'players': [
             {
                 'name': 'alice',
@@ -41,7 +41,7 @@ def data_base() -> dict:
             },
         ],
     }
-    return infos
+    return data
 
 
 def list_comprehension(player_table: dict) -> None:

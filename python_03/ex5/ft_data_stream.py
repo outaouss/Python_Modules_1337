@@ -1,4 +1,4 @@
-def generator(total: int, soldiers: list, xp: list, achievemant: list):
+def generator(total: int, soldiers: list, xp: list, achievemant: list) -> any:
     soldiers_iter = iter(soldiers)
     xp_iter = iter(xp)
     achievemant_iter = iter(achievemant)
@@ -25,7 +25,7 @@ def generator(total: int, soldiers: list, xp: list, achievemant: list):
         }
 
 
-def stream_analytics(events: dict):
+def stream_analytics(events: dict) -> None:
     total = 0
     highest_level = 0
     treasure_events = 0
@@ -60,7 +60,7 @@ def stream_analytics(events: dict):
     print(f"Processing time: {seconds:.3f} seconds")
 
 
-def fibonacci_generator():
+def fibonacci_generator() -> any:
     """Yields the Fibonacci sequence infinitely."""
     a, b = 0, 1
     while True:
@@ -68,7 +68,7 @@ def fibonacci_generator():
         a, b = b, a + b
 
 
-def prime_generator():
+def prime_generator() -> any:
     """Yields prime numbers infinitely."""
     num = 2
     while True:
@@ -82,7 +82,7 @@ def prime_generator():
         num += 1
 
 
-def generator_demonstration():
+def generator_demonstration() -> None:
     print("\n=== Generator Demonstration ===")
     fib_gen = fibonacci_generator()
     print("Fibonacci sequence (first 10):", end=" ")
@@ -105,7 +105,7 @@ def generator_demonstration():
 if __name__ == "__main__":
     try:
         soldiers = ['alice', 'bob', 'charlie']
-        achievemant = ['killed monster', 'found treasure', 'leveled up',]
+        achievemant = ['killed monster', 'found treasure', 'leveled up']
         xp = [5, 12, 8]
 
         print("=== Game Data Stream Processor ===\n")
