@@ -1,9 +1,9 @@
-def water_plants(plant_list: list):
+def water_plants(plant_list: list) -> None:
     '''Waters plants and ensures the system closes using a finally block'''
     print("Opening watering system")
     try:
         for plant in plant_list:
-            if plant is None or type(plant) is not str:
+            if plant is None:
                 raise ValueError(f"Cannot water {plant} - invalid plant!")
             elif plant == "":
                 raise ValueError("Cannot water None - invalid plant!")
@@ -14,7 +14,7 @@ def water_plants(plant_list: list):
         print("Closing watering system (cleanup)")
 
 
-def test_watering_system():
+def test_watering_system() -> None:
     '''Demonstrates watering system success and failure cases'''
     print("=== Garden Watering System ===")
 
@@ -39,4 +39,7 @@ def test_watering_system():
 
 
 if __name__ == "__main__":
-    test_watering_system()
+    try:
+        test_watering_system()
+    except Exception as e:
+        print(e)

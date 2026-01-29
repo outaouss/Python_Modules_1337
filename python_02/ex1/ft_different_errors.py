@@ -3,10 +3,10 @@ def garden_operations() -> None:
     demonstrate exception handling'''
     try:
         print("Testing ValueError...")
-        int("abc")
+        val = "abc"
+        int(val)
     except ValueError as e:
         print(f"Caught ValueError: {e}\n")
-
     try:
         print("Testing ZeroDivisionError...")
         1 / 0
@@ -41,4 +41,7 @@ def test_error_types() -> None:
 
 
 if __name__ == "__main__":
-    test_error_types()
+    try:
+        test_error_types()
+    except Exception as e:
+        print(e)

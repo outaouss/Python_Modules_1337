@@ -19,7 +19,7 @@ def check_plant_health(plant_name: str, water_level: int,
     return f"Plant '{plant_name}' is healthy!"
 
 
-def test_plant_checks():
+def test_plant_checks() -> None:
     """Demonstrates raising and catching errors for plant health."""
     print("=== Garden Plant Health Checker ===\n")
 
@@ -30,10 +30,10 @@ def test_plant_checks():
         ("Bad sunlight hours", ("tomato", 5, 0)),
     ]
 
-    for test, params in tests_conditions:
+    for test, (name, water, sun) in tests_conditions:
         print(f"Testing {test}...")
         try:
-            result = check_plant_health(*params)
+            result = check_plant_health(name, water, sun)
             print(result)
         except ValueError as e:
             print(f"Error: {e}")
@@ -43,4 +43,7 @@ def test_plant_checks():
 
 
 if __name__ == "__main__":
-    test_plant_checks()
+    try:
+        test_plant_checks()
+    except Exception as e:
+        print(e)

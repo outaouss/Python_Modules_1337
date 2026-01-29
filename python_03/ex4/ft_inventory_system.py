@@ -54,14 +54,15 @@ def current_inventory(items_dict: dict) -> None:
     total = int(calculate_values(items_dict))
     try:
         for item_name in items_dict.keys():
+            v_1 = f"({(int(items_dict.get(item_name, 0)) / total) * 100:.1f}%)"
+            v_2 = f"({(int(items_dict.get(item_name, 0)) / total) * 100:.1f}%)"
+            f"({(int(items_dict.get(item_name, 0)) / total) * 100:.1f}%)"
             if int(items_dict.get(item_name, 0)) > 1:
-                print(f"{item_name}: {items_dict.get(item_name, 0)} units "
-                      f"({(int(items_dict.get(item_name, 0)) / total)
-                          * 100:.1f}%)")
-            else:
                 print(f"{item_name}: {items_dict.get(item_name, 0)} "
-                      f"unit ({(int(items_dict.get(item_name, 0)) / total)
-                               * 100:.1f}%)")
+                      f"units {v_1}")
+            else:
+                print(f"{item_name}: {items_dict.get(item_name, 0)} unit "
+                      f"{v_2}")
     except Exception:
         print("Error occured while calculating the inventory !")
 

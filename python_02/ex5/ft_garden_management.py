@@ -1,4 +1,3 @@
-
 class GardenError(Exception):
     pass
 
@@ -12,7 +11,7 @@ class WaterError(GardenError):
 
 
 class GardenManager:
-    def __init__(self):
+    def __init__(self) -> None:
         self.plant_list = []
 
     def water_checker(level: int) -> bool:
@@ -27,7 +26,7 @@ class GardenManager:
             print("There is enough water in the tank!")
     water_level = staticmethod(water_level)
 
-    def add_plant(self, plant: list = None) -> None:
+    def add_plants(self, plant: list = None) -> None:
         try:
             if not plant:
                 raise ValueError("no plant given")
@@ -39,12 +38,11 @@ class GardenManager:
         except ValueError as e:
             print(f"Error adding plant: {e}")
 
-    def water_plants(self):
+    def water_plants(self) -> None:
         print("Opening watering system")
         try:
             for plant in self.plant_list:
-                if (plant[0] is None or plant[0] == ""
-                        or type(plant[0]) is not str):
+                if plant[0] is None or plant[0] == "":
                     raise ValueError("Cannot water None - invalid plant!")
                 print("Watering ", plant[0], "- success")
         except ValueError as e:
@@ -75,7 +73,7 @@ class GardenManager:
             print(f"Error checking {plant[0]}: {e}")
 
 
-def test_garden_management():
+def test_garden_management() -> None:
     print("=== Garden Management System ===\n")
     manager = GardenManager()
     plants = [
@@ -85,11 +83,11 @@ def test_garden_management():
     ]
     print("Adding plants to garden...")
     for plant in plants:
-        manager.add_plant()
+        manager.add_plants(plant)
     print()
 
     print("Watering plants...")
-    manager.water_plants(plant)
+    manager.water_plants()
     print()
 
     print("Checking plant health...")
@@ -107,4 +105,7 @@ def test_garden_management():
 
 
 if __name__ == "__main__":
-    test_garden_management()
+    try:
+        test_garden_management()
+    except Exception as e:
+        print(e)

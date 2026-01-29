@@ -14,10 +14,7 @@ def check_temperature(temp_str: str = None) -> None:
             print(f"Temperature {temp}°C is perfect for plants!\n")
 
     except ValueError as e:
-        if "invalid literal" in str(e):
-            print(f"Error: '{temp_str}' is not a valid number\n")
-        else:
-            print(f"Error: {e}\n")
+        print(e)
 
 
 def test_temperature_input() -> None:
@@ -35,4 +32,7 @@ def test_temperature_input() -> None:
 
 
 if __name__ == "__main__":
-    test_temperature_input()
+    try:
+        test_temperature_input()
+    except Exception as e:
+        print(e)
