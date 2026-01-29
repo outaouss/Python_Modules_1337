@@ -1,0 +1,2 @@
+def crisis_response():
+    

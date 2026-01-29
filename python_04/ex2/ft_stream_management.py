@@ -16,11 +16,10 @@ def stream_managemant() -> None:
     if val_2 == "":
         print("Error: No Status Report Provided !")
         return
-
-    sys.stdout.write(f"[STANDARD] Archie status from {val_1}: {val_2}\n")
-    sys.stderr.write("[ALERT] System diagnostic: Communication "
-                     "channels verified\n")
-    sys.stdout.write("[STANDARD] Data transimission complete\n")
+    print(f"[STANDARD] Archie status from {val_1}: {val_2}", file=sys.stdout)
+    print("[ALERT] System diagnostic: Communication "
+          "channels verified", file=sys.stderr)
+    print("[STANDARD] Data transimission complete", file=sys.stdout)
     print("\nThree-channel communication test successful.")
 
 
