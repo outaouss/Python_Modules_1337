@@ -34,6 +34,7 @@ def parse_items() -> dict | str | None:
     return f"Error: All provided arguments were invalid\n{example_err}"
 
 
+# Calcule -->
 def calculate_values(items_dict: dict) -> int:
     calcule = list(items_dict.values())
     cal = 0
