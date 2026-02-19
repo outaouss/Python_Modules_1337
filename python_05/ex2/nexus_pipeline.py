@@ -1,4 +1,4 @@
-from typing import Any, List, Union, Protocol, Dict
+from typing import Any, List, Protocol, Dict
 from abc import ABC
 
 
@@ -72,24 +72,27 @@ class JSONAdapter(ProcessingPipeline):
     def __init__(self, pipeline_id):
         super().__init__(pipeline_id)
 
-    def process(self, data: Any) -> Union[str, Any]:
-        pass
+        # Adding Gears
+        for stage in [InputStage(), TransformStage(), OutputStage()]:
+            self.add_stage(stage)
 
 
 class CSVAdapter(ProcessingPipeline):
     def __init__(self, pipeline_id):
         super().__init__(pipeline_id)
 
-    def process(self, data: Any) -> Union[str, Any]:
-        pass
+        # Adding Gears
+        for stage in [InputStage(), TransformStage(), OutputStage()]:
+            self.add_stage(stage)
 
 
 class StreamAdapter(ProcessingPipeline):
     def __init__(self, pipeline_id):
         super().__init__(pipeline_id)
 
-    def process(self, data: Any) -> Union[str, Any]:
-        pass
+        # Adding Gears
+        for stage in [InputStage(), TransformStage(), OutputStage()]:
+            self.add_stage(stage)
 
 
 class NexusManager():
@@ -100,7 +103,17 @@ class NexusManager():
         self.pipelines.append(pipeline)
 
     def process_data(self, data: Any) -> Any:
-        results = []
-        for pipeline in self.pipelines:
-            results.append(pipeline.process(data))
+
+        results = [pipeline.process(data) for pipeline in self.pipelines]
         return results
+
+
+if __name__ == "__main__":
+    print("=== CODE NEXUS - ENTERPRISE PIPELINE SYSTEM ===\n")
+
+    print("Initializing Nexus Manager...")
+    nexus_manager = NexusManager()
+    json = JSONAdapter("JSON_PIPELIN")
+    csv = CSVAdapter("CSV_PIPELIN")
+    stream = StreamAdapter("STREAM_PIPELIN")
+
