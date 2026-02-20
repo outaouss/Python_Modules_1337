@@ -8,7 +8,7 @@ class ProcessingStage(Protocol):
 
 
 class ProcessingPipeline(ABC):
-    def __init__(self, pipeline_id):
+    def __init__(self, pipeline_id: Any):
         self.pipeline_id = pipeline_id
         self.stages: List[ProcessingStage] = []
 
@@ -72,7 +72,7 @@ class OutputStage():
 
 
 class JSONAdapter(ProcessingPipeline):
-    def __init__(self, pipeline_id):
+    def __init__(self, pipeline_id: Any):
         super().__init__(pipeline_id)
 
         # Adding Gears
@@ -84,7 +84,7 @@ class JSONAdapter(ProcessingPipeline):
 
 
 class CSVAdapter(ProcessingPipeline):
-    def __init__(self, pipeline_id):
+    def __init__(self, pipeline_id: Any):
         super().__init__(pipeline_id)
 
         # Adding Gears
@@ -96,7 +96,7 @@ class CSVAdapter(ProcessingPipeline):
 
 
 class StreamAdapter(ProcessingPipeline):
-    def __init__(self, pipeline_id):
+    def __init__(self, pipeline_id: Any):
         super().__init__(pipeline_id)
 
         # Adding Gears
@@ -116,8 +116,6 @@ class NexusManager():
 
     def process_data(self, data: Any) -> Any:
 
-        # if not data:
-        #     return "Error Detected : Invalid Data Format !!!"
         results = [pipeline.process(data) for pipeline in self.pipelines]
         return results
 
