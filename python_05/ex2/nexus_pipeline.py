@@ -1,4 +1,4 @@
-from typing import Any, List, Protocol, Dict
+from typing import Any, List, Dict, Union, Optional, Protocol
 from abc import ABC
 
 
@@ -24,7 +24,7 @@ class ProcessingPipeline(ABC):
 
 class InputStage():
 
-    def process(self, data: Any) -> Dict:
+    def process(self, data: Any) -> Dict[str, Union[str, int, float, dict]]:
 
         if data:
             print(f"Input: {data}")
@@ -122,7 +122,7 @@ class NexusManager():
         return results
 
 
-def chaining_demo(adapters: List[Any]) -> None:
+def chaining_demo(adapters: List[Optional[Any]]) -> None:
     '''A Function That Demonstrate The Chaining !'''
 
     print("\n=== Pipeline Chaining Demo ===")
