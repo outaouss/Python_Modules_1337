@@ -188,5 +188,5 @@ def stream_system() -> None:
 if __name__ == "__main__":
     try:
         stream_system()
-    except Exception:
-        print("Error: While Executing The 'strem_system' Function")
+    except Exception as e:
+        print("Unexpected Error :", e)

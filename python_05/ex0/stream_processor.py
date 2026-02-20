@@ -180,6 +180,8 @@ def main_test() -> Optional[str] | Dict:
 
     val = 15
 
+    # To Complete All From The Typing Module !
+
     if val == 16:
         return "Val Returned Correct"
     elif val == 33:
@@ -189,4 +191,7 @@ def main_test() -> Optional[str] | Dict:
 
 
 if __name__ == "__main__":
-    main_test()
+    try:
+        main_test()
+    except Exception as e:
+        print("Unexpected Error :", e)

@@ -1,18 +1,21 @@
 from typing import Any, List, Dict, Union, Optional, Protocol
 from abc import ABC
+import collections
+
+del collections
 
 
 class ProcessingStage(Protocol):
-    def process(self, data: Any) -> Any:
+    def process(self, data: Any) -> Union[str, Any]:
         pass
 
 
 class ProcessingPipeline(ABC):
-    def __init__(self, pipeline_id: Any):
+    def __init__(self, pipeline_id: Any) -> None:
         self.pipeline_id = pipeline_id
         self.stages: List[ProcessingStage] = []
 
-    def add_stage(self, stage: ProcessingStage):
+    def add_stage(self, stage: ProcessingStage) -> None:
         self.stages.append(stage)
 
     def process(self, data: Any) -> Any:
@@ -72,38 +75,38 @@ class OutputStage():
 
 
 class JSONAdapter(ProcessingPipeline):
-    def __init__(self, pipeline_id: Any):
+    def __init__(self, pipeline_id: Any) -> None:
         super().__init__(pipeline_id)
 
         # Adding Gears
         for stage in [InputStage(), TransformStage(), OutputStage()]:
             self.add_stage(stage)
 
-    def process(self, data: Any) -> Any:
+    def process(self, data: Any) -> Union[str, Any]:
         return super().process(data)
 
 
 class CSVAdapter(ProcessingPipeline):
-    def __init__(self, pipeline_id: Any):
+    def __init__(self, pipeline_id: Any) -> None:
         super().__init__(pipeline_id)
 
         # Adding Gears
         for stage in [InputStage(), TransformStage(), OutputStage()]:
             self.add_stage(stage)
 
-    def process(self, data: Any) -> Any:
+    def process(self, data: Any) -> Union[str, Any]:
         return super().process(data)
 
 
 class StreamAdapter(ProcessingPipeline):
-    def __init__(self, pipeline_id: Any):
+    def __init__(self, pipeline_id: Any) -> None:
         super().__init__(pipeline_id)
 
         # Adding Gears
         for stage in [InputStage(), TransformStage(), OutputStage()]:
             self.add_stage(stage)
 
-    def process(self, data: Any) -> Any:
+    def process(self, data: Any) -> Union[str, Any]:
         return super().process(data)
 
 
@@ -111,7 +114,7 @@ class NexusManager():
     def __init__(self) -> None:
         self.pipelines: List[ProcessingPipeline] = []
 
-    def add_pipeline(self, pipeline: ProcessingPipeline):
+    def add_pipeline(self, pipeline: ProcessingPipeline) -> None:
         self.pipelines.append(pipeline)
 
     def process_data(self, data: Any) -> Any:
@@ -138,7 +141,8 @@ def chaining_demo(adapters: List[Optional[Any]]) -> None:
         print("Data is Not A Valid List")
 
 
-if __name__ == "__main__":
+def example_implement() -> None:
+
     print("=== CODE NEXUS - ENTERPRISE PIPELINE SYSTEM ===\n")
 
     print("Initializing Nexus Manager...")
@@ -195,3 +199,10 @@ if __name__ == "__main__":
         print("Recovery successful: Pipeline restored, processing resumed")
 
     print("\nNexus Integration complete. All systems operational.")
+
+
+if __name__ == "__main__":
+    try:
+        example_implement()
+    except Exception as e:
+        print("Unexpected Error :", e)
