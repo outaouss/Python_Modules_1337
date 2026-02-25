@@ -1,9 +1,10 @@
 from ex0.Card import Card
 from ex2.Combatable import Combatable
 from ex2.Magical import Magical
+from typing import Dict
 
 
-class ElitCard(Card, Combatable, Magical):
+class EliteCard(Card, Combatable, Magical):
 
     def __init__(self, name: str, cost: int, rarity: str,
                  attack_attr: int, health: int, mana: int) -> None:
@@ -26,8 +27,16 @@ class ElitCard(Card, Combatable, Magical):
         elif not isinstance(mana, int):
             raise ValueError("Cost Must Be A Valid Integer !")
 
-    def play(self, game_state: dict) -> dict:
-        pass
+    def play(self, game_state: Dict) -> Dict:
+        if game_state:
+            keys = ['card_played', 'mana_used', 'effect']
+            values = [self.name, self.cost, "Creature summoned to battlefield"]
+            result = {}
+
+            for key, value in zip(keys, values):
+                result[key] = value
+            return result
+        return {}
 
     def attack(self, target) -> dict:
         pass
