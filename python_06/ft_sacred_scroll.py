@@ -1,7 +1,7 @@
 import alchemy
 
 
-def sacred_scroll():
+def sacred_scroll() -> None:
     print("\n=== Sacred Scroll Mastery ===\n")
 
     print("Testing direct module access:")

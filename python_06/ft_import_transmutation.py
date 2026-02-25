@@ -1,11 +1,10 @@
 import alchemy.elements
-from alchemy.elements import create_fire
-from alchemy.potions import healing_potion as heal
-from alchemy.elements import create_water, create_earth
-from alchemy.potions import strength_potion
+from alchemy.elements import create_water
+from alchemy.potions import healing_potion as heal, strength_potion
+from alchemy.elements import create_earth, create_fire
 
 
-def transmutation():
+def transmutation() -> None:
     print("\n=== Import Transmutation Mastery ===\n")
 
     print("Method 1 - Full module import:")

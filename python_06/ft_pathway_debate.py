@@ -3,7 +3,7 @@ from alchemy.transmutation import philosophers_stone, elixir_of_life
 import alchemy
 
 
-def pathway():
+def pathway() -> None:
     print("\n=== Pathway Debate Mastery ===\n")
 
     print("Testing Absolute Imports (from basic.py):")
