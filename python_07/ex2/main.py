@@ -1,38 +1,34 @@
-from ex2.Combatable import Combatable
+# from ex2.Combatable import Combatable
 from ex2.EliteCard import EliteCard
-from ex2.Magical import Magical
-from ex0.Card import Card
+# from ex2.Magical import Magical
+# from ex0.Card import Card
 
 
 def main():
     print("\n=== DataDeck Ability System ===\n")
 
     eliteCard = EliteCard("Arcane Warrior",
-                          5, "Legendary", 7, 2, 4)
+                          5, "Legendary", 5, 5, 4)
     print(eliteCard.__class__.__name__, "capabilities:")
 
-    # names = [name.__name__ for name in EliteCard.__bases__]
-    names = [name.__name__ for name in EliteCard.__bases__]
+    names = [name for name in EliteCard.__bases__]
 
-    print(names[0])
-    print(dir(names[0]))
+    for name in names:
+        functions = dir(name)
+        result = [method for method in functions if not method.startswith("_")]
+        print(f"- {name.__name__} {result}")
 
-    card_methodes = [method for method in dir(Card) if
-                     not method.startswith("_")]
-    combatable_methodes = [method for method in dir(Combatable) if
-                           not method.startswith("_")]
-    magical_methodes = [method for method in dir(Magical) if
-                        not method.startswith("_")]
+    print(f"\nPlaying {eliteCard.name} ({eliteCard.__class__.__name__}):\n")
 
-    for n in names:
-        if n.lower() == "card":
-            print("- Card:", card_methodes)
-        elif n.lower() == "combatable":
-            print("- Combatable:", combatable_methodes)
-        elif n.lower() == "magical":
-            print("- Magical:", magical_methodes)
+    print("Combat phase:")
+    print("Attack result:", eliteCard.attack('Enemy'))
+    print("Defense result:", eliteCard.defend(2))
 
-    print(f"\nPlaying Arcane Warrior (Elite Card):\n")
+    print("\nMagic phase:")
+    print("Spell cast:", eliteCard.cast_spell("Fireball", ["Enemy1", "Enemy2"]))
+    print("Mana channel:", eliteCard.channel_mana(3))
+
+    print("\nMultiple interface implementation successful!")
 
 
 if __name__ == "__main__":

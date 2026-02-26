@@ -2,6 +2,7 @@ from ex0.Card import Card
 from ex2.Combatable import Combatable
 from ex2.Magical import Magical
 from typing import Dict
+import random
 
 
 class EliteCard(Card, Combatable, Magical):
@@ -39,13 +40,25 @@ class EliteCard(Card, Combatable, Magical):
         return {}
 
     def attack(self, target) -> dict:
-        pass
+        combat_types = ['melle', 'gun', 'sword', 'katana']
+        result = {'attacker': self.name,
+                  'target': target,
+                  'damage': self.attack_attr,
+                  'combat_type': random.choice(combat_types)}
+        return result
 
     def cast_spell(self, spell_name: str, targets: list) -> dict:
         pass
 
     def defend(self, incoming_damage: int) -> dict:
-        pass
+        blocked = self.health - incoming_damage
+
+        result = {'defender': self.name,
+                  'damage_taken': incoming_damage,
+                  'damage_blocked': blocked if blocked >= 0 else 0,
+                  'still_alive': True if self.health - incoming_damage >= 0
+                  else False}
+        return result
 
     def get_combat_stats(self) -> dict:
         pass
