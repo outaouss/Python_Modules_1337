@@ -2,9 +2,16 @@ from ex0.Card import Card
 from ex2.Combatable import Combatable
 from ex2.Magical import Magical
 from typing import Dict
+from enum import Enum
 import random
 
 
+class Spells_Names(Enum):
+    fireball = "Fireball"
+    lightning_bolt = "Lightning Bolt"
+    arcane_blast = "Arcane Blast"
+    venomous_strike = "Venomous Strike"
+    
 class EliteCard(Card, Combatable, Magical):
 
     def __init__(self, name: str, cost: int, rarity: str,
@@ -39,7 +46,7 @@ class EliteCard(Card, Combatable, Magical):
             return result
         return {}
 
-    def attack(self, target) -> dict:
+    def attack(self, target: str) -> dict:
         combat_types = ['melle', 'gun', 'sword', 'katana']
         result = {'attacker': self.name,
                   'target': target,
@@ -48,7 +55,18 @@ class EliteCard(Card, Combatable, Magical):
         return result
 
     def cast_spell(self, spell_name: str, targets: list) -> dict:
-        pass
+        
+        spell_names = [spell.value for spell in Spells_Names]
+        if spell_name not in spell_names:
+            return f"Error: Spell Name: {spell_name} Is Not Valid !"
+        result = {
+            'caster': self.name,
+            'spell': spell_name,
+            'targets': targets,
+            'mana_used': len(targets) * 2
+        }
+        
+        return result
 
     def defend(self, incoming_damage: int) -> dict:
         blocked = self.health - incoming_damage
@@ -64,7 +82,12 @@ class EliteCard(Card, Combatable, Magical):
         pass
 
     def channel_mana(self, amount: int) -> dict:
-        pass
+        if not isinstance(amount, int):
+            return (f"Ammoun Must Be A Valid Number : Ammount Provided: '{amount}'")
+        return {
+            'channeled': amount,
+            'total_mana': self.mana
+        }
 
     def get_magic_stats(self) -> dict:
         pass
