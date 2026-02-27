@@ -22,11 +22,15 @@ def main():
     print("Defense result:", eliteCard.defend(2))
 
     print("\nMagic phase:")
-    print("Spell cast:", eliteCard.cast_spell("Fireball", ["Enemy1", "Enemy2"]))
+    print("Spell cast:", eliteCard.cast_spell("Fireball",
+                                              ["Enemy1", "Enemy2"]))
     print("Mana channel:", eliteCard.channel_mana(3))
 
     print("\nMultiple interface implementation successful!")
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print("Error:", e)

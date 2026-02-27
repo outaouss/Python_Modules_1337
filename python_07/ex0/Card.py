@@ -7,6 +7,7 @@ class RarityValidater(Enum):
     rare = "Rare"
     legendary = "Legendary"
     regular = "Regular"
+    epic = "Epic"
 
 
 class Card(ABC):
@@ -17,6 +18,10 @@ class Card(ABC):
         if rarity not in validate:
             raise ValueError("Rarity Invalid !")
         self.rarity = rarity
+        if not isinstance(name, str):
+            raise ValueError("Card Name Must Be A Valid String !")
+        if not isinstance(cost, int):
+            raise ValueError("Card Cost Must Be A Valid Int !")
 
     @abstractmethod
     def play(self, game_state: Dict) -> Dict:

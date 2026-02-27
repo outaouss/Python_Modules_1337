@@ -9,6 +9,19 @@ class CreatureCard(Card):
         self.attack = attack
         self.health = health
 
+        if not isinstance(name, str) or not name:
+            raise ValueError("Card name Type is Invalid")
+        if not isinstance(cost, int):
+            raise ValueError("Cost Type is Invalid")
+        if not isinstance(rarity, str) or not rarity:
+            raise ValueError("Rarity Type is Invalid")
+        if not isinstance(attack, int):
+            raise ValueError("Attack Type is Invalid")
+        if not isinstance(health, int):
+            raise ValueError("Health Type is Invalid")
+        if attack <= 0 or health <= 0:
+            raise ValueError("Attack and health must be positive integers")
+
     def play(self, game_state: Dict) -> Dict:
         if game_state:
             keys = ['card_played', 'mana_used', 'effect']

@@ -9,16 +9,30 @@ class ArtifactCard(Card):
         self.durability = durability
         self.effect = effect
 
-    def play(self, game_state: Dict) -> Dict:
-        if game_state:
-            keys = ['card_played', 'mana_used', 'effect']
-            values = [self.name, self.cost, self.effect]
-            result = {}
+        if not isinstance(name, str) or not name:
+            raise ValueError("Invalid ArtifactCard Name Type")
+        if not isinstance(cost, int):
+            raise ValueError("Invalid ArtifactCard Cost Type")
+        if not isinstance(rarity, str) or not rarity:
+            raise ValueError("Invalid ArtifactCard Rarity Type")
+        if not isinstance(durability, int):
+            raise ValueError("Invalid ArtifactCard Durability Type")
+        if not isinstance(effect, str) or not effect:
+            raise ValueError("Invalid ArtifactCard Effect Type")
 
-            for key, value in zip(keys, values):
-                result[key] = value
-            return result
-        return {}
+    def play(self, game_state: Dict) -> Dict:
+        if not isinstance(game_state, dict):
+            raise ValueError(f"{game_state} is not a Dict !")
+        if not game_state:
+            raise ValueError(f"{game_state} is An Empty Dict !")
+
+        keys = ['card_played', 'mana_used', 'effect']
+        values = [self.name, self.cost, self.effect]
+        result = {}
+
+        for key, value in zip(keys, values):
+            result[key] = value
+        return result
 
     def activate_ability(self) -> Dict:
 

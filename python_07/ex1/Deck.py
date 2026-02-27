@@ -35,7 +35,7 @@ class Deck():
         spell_count = 0
         artifact_count = 0
         costs = 0
-        average = 0
+        raw_average = 0
 
         for card in self.cards:
             if isinstance(card, CreatureCard):
@@ -46,7 +46,8 @@ class Deck():
                 artifact_count += 1
             costs += card.cost
 
-        average = costs / total if total else 0
+        raw_average = costs / total if total else 0
+        average = f"{raw_average:.2f}"
 
         return ({
             'total_cards': total,

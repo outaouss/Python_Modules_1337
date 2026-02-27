@@ -11,7 +11,8 @@ class Spells_Names(Enum):
     lightning_bolt = "Lightning Bolt"
     arcane_blast = "Arcane Blast"
     venomous_strike = "Venomous Strike"
-    
+
+
 class EliteCard(Card, Combatable, Magical):
 
     def __init__(self, name: str, cost: int, rarity: str,
@@ -24,15 +25,15 @@ class EliteCard(Card, Combatable, Magical):
 
         if not isinstance(name, str):
             raise ValueError("Name Must Be A Valid String !")
-        elif not isinstance(cost, int):
+        if not isinstance(cost, int):
             raise ValueError("Cost Must Be A Valid Integer !")
-        elif not isinstance(rarity, str):
+        if not isinstance(rarity, str):
             raise ValueError("Rarity Must Be A Valid String !")
-        elif not isinstance(attack_attr, int):
+        if not isinstance(attack_attr, int):
             raise ValueError("Cost Must Be A Valid Integer !")
-        elif not isinstance(health, int):
+        if not isinstance(health, int):
             raise ValueError("Cost Must Be A Valid Integer !")
-        elif not isinstance(mana, int):
+        if not isinstance(mana, int):
             raise ValueError("Cost Must Be A Valid Integer !")
 
     def play(self, game_state: Dict) -> Dict:
@@ -55,7 +56,7 @@ class EliteCard(Card, Combatable, Magical):
         return result
 
     def cast_spell(self, spell_name: str, targets: list) -> dict:
-        
+
         spell_names = [spell.value for spell in Spells_Names]
         if spell_name not in spell_names:
             return f"Error: Spell Name: {spell_name} Is Not Valid !"
@@ -65,7 +66,7 @@ class EliteCard(Card, Combatable, Magical):
             'targets': targets,
             'mana_used': len(targets) * 2
         }
-        
+
         return result
 
     def defend(self, incoming_damage: int) -> dict:
@@ -79,15 +80,21 @@ class EliteCard(Card, Combatable, Magical):
         return result
 
     def get_combat_stats(self) -> dict:
-        pass
+        return {
+            'attack': self.attack_attr,
+            'health': self.health
+        }
 
     def channel_mana(self, amount: int) -> dict:
         if not isinstance(amount, int):
-            return (f"Ammoun Must Be A Valid Number : Ammount Provided: '{amount}'")
+            return ("Ammoun Must Be A Valid Number : Ammount Provided: "
+                    f"'{amount}'")
         return {
             'channeled': amount,
             'total_mana': self.mana
         }
 
     def get_magic_stats(self) -> dict:
-        pass
+        return {
+            'mana': self.mana
+        }
