@@ -4,7 +4,8 @@ from ex3.GameEngine import GameEngine
 
 
 def main():
-    print("\n=== DataDeck Game Engine ===\n")
+    print("\n=== DataDeck Game Engine ===")
+    print()
 
     print("Configuring Fantasy Card Game...")
     factory = FantasyCardFactory()
