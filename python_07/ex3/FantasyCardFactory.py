@@ -27,10 +27,10 @@ class FantasyCardFactory(CardFactory):
             data = creatures[name_or_power.lower()]
             return CreatureCard(*data)
         elif isinstance(name_or_power, int) and\
-            name_or_power in powers:
-                
-                data = powers[name_or_power]
-                return CreatureCard(*data)
+                name_or_power in powers:
+
+            data = powers[name_or_power]
+            return CreatureCard(*data)
 
         print("[INFO]: name_or_power invalid so you will "
               "get random 'Creature Card'! Good Luck")
@@ -56,10 +56,10 @@ class FantasyCardFactory(CardFactory):
             data = spells[name_or_power.lower()]
             return SpellCard(*data)
         elif isinstance(name_or_power, int) and\
-            name_or_power in powers:
-                
-                data = powers[name_or_power]
-                return SpellCard(*data)
+                name_or_power in powers:
+
+            data = powers[name_or_power]
+            return SpellCard(*data)
 
         print("[INFO]: name_or_power invalid so you will "
               "get random 'Spell Card'! Good Luck")
@@ -78,13 +78,12 @@ class FantasyCardFactory(CardFactory):
                          'of your deck and draw one.')
         }
         powers = {
-            3: ('Ring of the Archmagi', 5, 'Legendary', 3,
-                          'Permanent: +1 Mana Per Turn'),
-            2: ('Staff of the Wilds ', 5, 'Rare', 2,
-                       'End of Turn: Summon a 1/1 Forest Sapling creature.'),
-            5: ('Chrono Prism', 3, 'Epic', 5,
-                         'Active: Look at the top 3 cards '
-                         'of your deck and draw one.')
+            3: ('Ring of the Archmagi', 5, 'Legendary', 3, 'Permanent: +1 '
+                'Mana Per Turn'),
+            2: ('Staff of the Wilds ', 5, 'Rare', 2, 'End of Turn: '
+                'Summon a 1/1 Forest Sapling creature.'),
+            5: ('Chrono Prism', 3, 'Epic', 5, 'Active: '
+                'Look at the top 3 cards of your deck and draw one.')
         }
 
         if isinstance(name_or_power, str) and\
@@ -93,11 +92,11 @@ class FantasyCardFactory(CardFactory):
             data = artifacts[name_or_power.lower()]
             return ArtifactCard(*data)
         elif isinstance(name_or_power, int) and\
-            name_or_power in powers:
-                
-                data = powers[name_or_power]
-                return ArtifactCard(*data)
-            
+                name_or_power in powers:
+
+            data = powers[name_or_power]
+            return ArtifactCard(*data)
+
         print("[INFO]: name_or_power invalid so you will "
               "get random 'Artifact Card'! Good Luck")
 

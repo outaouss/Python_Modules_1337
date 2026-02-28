@@ -27,7 +27,8 @@ class AggressiveStrategy(GameStrategy):
                     cards_palyed.append(card.name)
                     mana_used += card.cost
 
-                    attack = card.attack_target(self.prioritize_targets(enemies))
+                    attack = \
+                        card.attack_target(self.prioritize_targets(enemies))
 
                     targets_attacked = attack['target']
                     damage_dealt += attack["damage_dealt"]
