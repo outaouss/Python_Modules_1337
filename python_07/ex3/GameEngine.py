@@ -47,5 +47,5 @@ class GameEngine:
             'strategy_used': self.strategy.get_strategy_name()
             if self.strategy else "None",
             'total_damage': self.total_damage,
-            'cards_created': self.cards_created
+            'cards_created': self.cards_created,
         }

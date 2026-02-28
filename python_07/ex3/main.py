@@ -14,7 +14,10 @@ def main():
     print("Strategy:", AggressiveStrategy.__name__)
 
     types = factory.get_supported_types()
-    print("Available types:", types)
+    if types:
+        print("Available types:", types)
+    else:
+        raise ValueError("Invalid Types !!!")
 
     print("\nSimulating aggressive turn...")
     my_hand = [

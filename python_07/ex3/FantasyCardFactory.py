@@ -63,20 +63,32 @@ class FantasyCardFactory(CardFactory):
 
     def create_themed_deck(self, size: int) -> Dict:
         deck = []
-        for _ in range(size):
-            choice = random.choice(["creature", "spell", "artifact"])
+        already_in = []
 
-            if choice == "creature":
-                deck.append(self.create_creature())
-            elif choice == "spell":
-                deck.append(self.create_spell())
-            else:
-                deck.append(self.create_artifact())
+        if isinstance(size, int):
+            for _ in range(size):
+                while True:
+                    choice = random.choice(["creature", "spell", "artifact"])
+                    if choice in already_in:
+                        choice = random.choice(["creature",
+                                                "spell", "artifact"])
+                    else:
+                        break
 
-        return {
-            "deck_size": size,
-            "cards": deck
-        }
+                if choice not in already_in:
+                    already_in.append(choice)
+                    if choice == "creature":
+                        deck.append(self.create_creature())
+                    elif choice == "spell":
+                        deck.append(self.create_spell())
+                    else:
+                        deck.append(self.create_artifact())
+
+            return {
+                "deck_size": size,
+                "cards": deck
+            }
+        raise ValueError(f"The Size is Nut A Numeric Number: '{size}'")
 
     def get_supported_types(self) -> Dict:
         return {
