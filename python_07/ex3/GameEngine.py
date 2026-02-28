@@ -14,6 +14,11 @@ class GameEngine:
     def configure_engine(self, factory: CardFactory,
                          strategy: GameStrategy) -> None:
 
+        if not isinstance(factory, CardFactory):
+            raise ValueError("factory is Not A CardFactory !")
+        if not isinstance(strategy, GameStrategy):
+            raise ValueError("Strategy is Not A GameStrategy !")
+
         self.factory = factory
         self.strategy = strategy
 

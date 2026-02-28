@@ -19,14 +19,17 @@ def main():
     else:
         raise ValueError("Invalid Types !!!")
 
-    print("\nSimulating aggressive turn...")
     my_hand = [
         factory.create_creature('dragon'),
         factory.create_creature('goblin'),
         factory.create_spell('lightning')
     ]
+    if isinstance(my_hand, list) and my_hand:
+        print("\nSimulating aggressive turn...")
+        print("Hand:", [f"{card.name} ({card.cost})" for card in my_hand])
+    else:
+        raise ValueError("Hand Must Be A Valid List !")
 
-    print("Hand:", [f"{card.name} ({card.cost})" for card in my_hand])
 
     aggresive = AggressiveStrategy()
     print("\nTurn execution:")
@@ -37,7 +40,7 @@ def main():
     engine.configure_engine(factory, aggresive)
     engine.simulate_turn()
 
-    print("\nGame Report:", engine.get_engine_status())
+    print("\nGame Report:\n", engine.get_engine_status())
 
     print("\nAbstract Factory + Strategy Pattern: "
           "Maximum flexibility achieved!")

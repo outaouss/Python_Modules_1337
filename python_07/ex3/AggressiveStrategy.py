@@ -10,7 +10,9 @@ class AggressiveStrategy(GameStrategy):
                 cards_palyed = []
                 mana_used = 0
                 targets_attacked = []
-                enemies = [{2: "Enemy Player"}]
+                enemies = [{2: "Enemy Player"},
+                           {5: "Boss Player"},
+                           {7: "Legendary Player"}]
                 damage_dealt = 0
 
                 attack_cards = [c for c in hand if hasattr(c, "attack")]
@@ -25,11 +27,9 @@ class AggressiveStrategy(GameStrategy):
                     cards_palyed.append(card.name)
                     mana_used += card.cost
 
-                    attack = card.attack_target
-                    (self.prioritize_targets(enemies))
+                    attack = card.attack_target(self.prioritize_targets(enemies))
 
-                    if attack["target"] not in targets_attacked:
-                        targets_attacked.append(attack["target"])
+                    targets_attacked = attack['target']
                     damage_dealt += attack["damage_dealt"]
 
                 return {
@@ -46,7 +46,11 @@ class AggressiveStrategy(GameStrategy):
         return 'AggressiveStrategy'
 
     def prioritize_targets(self, available_targets: List) -> List:
-        targets_attack = available_targets[0].keys()
-        weakest_target = available_targets[0][min(targets_attack)]
+        valid_targets = []
 
-        return weakest_target
+        for target_dict in available_targets:
+            for key, target_name in target_dict.items():
+                if key <= 2:
+                    valid_targets.append(target_name)
+
+        return valid_targets
