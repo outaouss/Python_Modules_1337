@@ -20,12 +20,12 @@ class Card(ABC):
         self.rarity = rarity
         if not isinstance(name, str):
             raise ValueError("Card Name Must Be A Valid String !")
-        if not isinstance(cost, int):
-            raise ValueError("Card Cost Must Be A Valid Int !")
+        if not isinstance(cost, int) or cost < 0:
+            raise ValueError("Card Cost Must Be A Valid Positive int !")
 
-    @abstractmethod
     def play(self, game_state: Dict) -> Dict:
         pass
+    play = abstractmethod(play)
 
     def get_card_info(self) -> Dict:
         return (

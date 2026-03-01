@@ -28,13 +28,16 @@ def main() -> None:
     else:
         print("Play result: Mana Insufficient")
 
-    mana = 3
     try:
+        mana = 3
         if type(mana) is not int:
             print("\nError: Mana Must Be A Numeric Value")
             return
         if not creature.is_playable(mana):
-            print(f"\nTesting insufficient mana ({mana} available)")
+            print(f"\nTesting insufficent mana ({mana} available)")
+            print("Playable:", creature.is_playable(mana))
+        else:
+            print(f"\nTesting With Sufficent mana ({mana} available)")
             print("Playable:", creature.is_playable(mana))
     except TypeError:
         print("Error: TypeError Raised !")

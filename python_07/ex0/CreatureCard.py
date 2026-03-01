@@ -20,10 +20,11 @@ class CreatureCard(Card):
         if not isinstance(health, int):
             raise ValueError("Health Type is Invalid")
         if attack <= 0 or health <= 0:
-            raise ValueError("Attack and health must be positive integers")
+            raise ValueError("Attack and Health must be positive integers")
 
     def play(self, game_state: Dict) -> Dict:
-        if game_state:
+        if game_state and isinstance(game_state, dict):
+
             keys = ['card_played', 'mana_used', 'effect']
             values = [self.name, self.cost, "Creature summoned to battlefield"]
             result = {}
@@ -36,8 +37,7 @@ class CreatureCard(Card):
     def attack_target(self, target: str) -> Dict:
         result = self.get_card_info()
         if not target:
-            print("Error: Target Cannot Be Empty !")
-            return {}
+            raise ValueError("Error: Target Cannot Be Empty !")
         if result:
             keys = ['attacker', 'target', 'damage_dealt', 'combat_resolved']
             values = [self.name, target, self.attack, True]

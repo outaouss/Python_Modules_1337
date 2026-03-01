@@ -33,7 +33,7 @@ class SpellCard(Card):
             raise ValueError("Invalid SpellCard Rarity Type")
 
     def play(self, game_state: Dict) -> Dict:
-        if game_state:
+        if game_state and isinstance(game_state, dict):
             keys = ['card_played', 'mana_used', 'effect']
             values = [self.name, self.cost, self.effect_type]
             result = {}
@@ -41,13 +41,16 @@ class SpellCard(Card):
             for key, value in zip(keys, values):
                 result[key] = value
             return result
-        raise ValueError("Error: Dict Empty !")
+        raise ValueError(f"Error: {game_state} is not dict or Dict is Empty !")
 
     def resolve_effect(self, targets: List) -> Dict:
 
-        return {
-            "spell_resolved": self.name,
-            "type": self.effect_type,
-            "targets_affected": len(targets),
-            "status": "Spell consumed and moved to graveyard"
-        }
+        if isinstance(targets, list) and targets:
+
+            return {
+                "spell_resolved": self.name,
+                "type": self.effect_type,
+                "targets_affected": len(targets),
+                "status": "Spell consumed and moved to graveyard"
+            }
+        raise ValueError(f"{targets} is Not A List or List is Empty !")

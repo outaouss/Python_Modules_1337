@@ -3,14 +3,14 @@ from abc import ABC, abstractmethod
 
 class Combatable(ABC):
 
-    @abstractmethod
     def attack(self, target) -> dict:
         pass
+    attack = abstractmethod(attack)
 
-    @abstractmethod
     def defend(self, incoming_damage: int) -> dict:
         pass
+    defend = abstractmethod(defend)
 
-    @abstractmethod
     def get_combat_stats(self) -> dict:
         pass
+    get_combat_stats = abstractmethod(get_combat_stats)
