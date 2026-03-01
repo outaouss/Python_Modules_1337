@@ -3,7 +3,7 @@ from ex3.AggressiveStrategy import AggressiveStrategy
 from ex3.GameEngine import GameEngine
 
 
-def main():
+def main() -> None:
     print("\n=== DataDeck Game Engine ===")
     print()
 
@@ -29,7 +29,6 @@ def main():
         print("Hand:", [f"{card.name} ({card.cost})" for card in my_hand])
     else:
         raise ValueError("Hand Must Be A Valid List !")
-
 
     aggresive = AggressiveStrategy()
     print("\nTurn execution:")

@@ -1,7 +1,7 @@
 from ex2.EliteCard import EliteCard
 
 
-def main():
+def main() -> None:
     print("\n=== DataDeck Ability System ===\n")
 
     eliteCard = EliteCard("Arcane Warrior",
