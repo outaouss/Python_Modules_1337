@@ -45,7 +45,7 @@ class AlienContact(BaseModel):
         return self
 
 
-def main():
+def main() -> None:
     print("Alien Contact Log Validation")
     print("======================================")
     try:

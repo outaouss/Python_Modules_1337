@@ -73,7 +73,7 @@ class SpaceMission(BaseModel):
         return self
 
 
-def main():
+def main() -> None:
     print("Space Mission Crew Validation")
     print("=========================================")
     try:
