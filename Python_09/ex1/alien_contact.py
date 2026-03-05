@@ -18,7 +18,8 @@ class AlienContact(BaseModel):
 
     location: str = Field(min_length=3, max_length=100)
 
-    contact_type: ContactType
+    contact_type: ContactType = Field(..., description="The"
+                                      "classification of the alien encounter")
 
     signal_strength: float = Field(ge=0.0, le=10.0)
 
@@ -32,7 +33,7 @@ class AlienContact(BaseModel):
 
     @model_validator(mode='after')
     def validation_custom(self):
-        if not self.contact_id[0] == 'A' and not self.contact_id[1] == 'C':
+        if not self.contact_id.startswith('AC'):
             raise ValueError("The Contact ID Must Start With 'AC'")
         if not self.is_verified:
             raise ValueError(f"The Verification is {self.is_verified}")
@@ -93,4 +94,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Unexpected Error: {e}")

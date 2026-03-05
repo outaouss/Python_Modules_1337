@@ -14,7 +14,8 @@ class SpaceStation(BaseModel):
 
     oxygen_level: float = Field(ge=0.0, le=100.0)
 
-    last_maintenance: datetime
+    last_maintenance: datetime = Field(..., description="UTC"
+                                       "timestamp of the last safety check")
 
     is_operational: bool = True
 
@@ -69,4 +70,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        print(f"Unexpected Error: {e}")
