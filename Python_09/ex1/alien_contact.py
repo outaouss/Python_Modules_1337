@@ -45,7 +45,7 @@ class AlienContact(BaseModel):
                               "indicating if the event has been authenticated")
 
     @model_validator(mode='after')
-    def validation_custom(self):
+    def validation_custom(self) -> "AlienContact":
         if not self.contact_id.startswith('AC'):
             raise ValueError("The Contact ID Must Start With 'AC'")
         if not self.is_verified:

@@ -72,7 +72,7 @@ class SpaceMission(BaseModel):
                                    "resources in millions of credits/dollars")
 
     @model_validator(mode='after')
-    def validation_mission(self):
+    def validation_mission(self) -> "SpaceMission":
         if not self.mission_id.startswith('M'):
             raise ValueError("Mission ID Must Start With 'M'")
         if self.duration_days > 365:
