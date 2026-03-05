@@ -4,22 +4,32 @@ from typing import Optional
 
 
 class SpaceStation(BaseModel):
-    station_id: str = Field(min_length=3, max_length=10)
+    station_id: str = Field(..., min_length=3, max_length=10,
+                            description="Unique alphanumeric identifier "
+                            "for the orbital facility")
 
-    name: str = Field(min_length=1, max_length=50)
+    name: str = Field(..., min_length=1, max_length=50, description="The "
+                      "official designated name of the space station")
 
-    crew_size: int = Field(ge=1, le=20)
+    crew_size: int = Field(..., ge=1, le=20, description="Current "
+                           "number of personnel stationed on board")
 
-    power_level: float = Field(ge=0.0, le=100.0)
+    power_level: float = Field(..., ge=0.0, le=100.0, description="Current "
+                               "energy reserves expressed as a percentage")
 
-    oxygen_level: float = Field(ge=0.0, le=100.0)
+    oxygen_level: float = Field(..., ge=0.0, le=100.0,
+                                description="Atmospheric "
+                                "oxygen concentration percentage")
 
     last_maintenance: datetime = Field(..., description="UTC"
                                        "timestamp of the last safety check")
 
-    is_operational: bool = True
+    is_operational: bool = Field(True, description="Status "
+                                 "flag indicating if the "
+                                 "station is currently functional")
 
-    notes: Optional[str] = Field(None, max_length=200)
+    notes: Optional[str] = Field(None, max_length=200, description="Additional"
+                                 " technical remarks or status observations")
 
 
 def main() -> None:

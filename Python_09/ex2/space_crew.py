@@ -13,40 +13,63 @@ class CrewRank(Enum):
 
 
 class CrewMember(BaseModel):
-    member_id: str = Field(min_length=3, max_length=10)
+    member_id: str = Field(..., min_length=3, max_length=10,
+                           description="Unique alphanumeric "
+                           "identifier for the crew personnel")
 
-    name: str = Field(min_length=2, max_length=50)
+    name: str = Field(..., min_length=2, max_length=50,
+                      description="Full legal name of the crew member")
 
     rank: CrewRank = Field(..., description="The official"
                            "hierarchy level of the crew member")
 
-    age: int = Field(ge=18, le=80)
+    age: int = Field(..., ge=18, le=80, description="Age of the member "
+                     "in years (must be within flight-ready range)")
 
-    specialization: str = Field(min_length=3, max_length=30)
+    specialization: str = Field(..., min_length=3, max_length=30,
+                                description="Primary technical expertise "
+                                "(e.g., Pilot, Engineer, Biologist)")
 
-    years_experience: int = Field(ge=0, le=50)
+    years_experience: int = Field(..., ge=0, le=50, description="Total number "
+                                  "of years active in "
+                                  "space-related industries")
 
-    is_active: bool = True
+    is_active: bool = Field(True, description="Status flag indicating "
+                            "if the member is currently cleared for duty")
 
 
 class SpaceMission(BaseModel):
-    mission_id: str = Field(min_length=5, max_length=15)
+    mission_id: str = Field(..., min_length=5, max_length=15,
+                            description="Unique reference "
+                            "code for the specific space mission")
 
-    mission_name: str = Field(min_length=3, max_length=100)
+    mission_name: str = Field(..., min_length=3, max_length=100,
+                              description="The formal public "
+                              "name of the exploration mission")
 
-    destination: str = Field(min_length=3, max_length=50)
+    destination: str = Field(..., min_length=3, max_length=50,
+                             description="Target celestial "
+                             "body or orbital coordinate")
 
     launch_date: datetime = Field(..., description="The "
                                   "scheduled date and time"
                                   "for mission departure")
 
-    duration_days: int = Field(ge=1, le=3650)
+    duration_days: int = Field(..., ge=1, le=3650,
+                               description="Estimated length "
+                               "of the mission in Earth days")
 
-    crew: List[CrewMember] = Field(min_length=1, max_length=12)
+    crew: List[CrewMember] = Field(..., min_length=1, max_length=12,
+                                   description="List of personnel "
+                                   "assigned to this specific mission")
 
-    mission_status: str = "planned"
+    mission_status: str = Field("planned",
+                                description="Current operational phase "
+                                "of the mission (e.g., planned, in-progress)")
 
-    budget_millions: float = Field(ge=1.0, le=10000.0)
+    budget_millions: float = Field(..., ge=1.0, le=10000.0,
+                                   description="Total allocated financial "
+                                   "resources in millions of credits/dollars")
 
     @model_validator(mode='after')
     def validation_mission(self):

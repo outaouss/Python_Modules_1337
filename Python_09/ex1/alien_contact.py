@@ -12,24 +12,37 @@ class ContactType(Enum):
 
 
 class AlienContact(BaseModel):
-    contact_id: str = Field(min_length=5, max_length=15)
+    contact_id: str = Field(..., min_length=5, max_length=15,
+                            description="Unique alphanumeric "
+                            "identifier for the contact event")
 
-    timestamp: datetime
+    timestamp: datetime = Field(..., description="UTC date and "
+                                "time when the contact was initiated")
 
-    location: str = Field(min_length=3, max_length=100)
+    location: str = Field(..., min_length=3, max_length=100,
+                          description="Geographic coordinates "
+                          "or named location of the encounter")
 
     contact_type: ContactType = Field(..., description="The"
                                       "classification of the alien encounter")
 
-    signal_strength: float = Field(ge=0.0, le=10.0)
+    signal_strength: float = Field(..., ge=0.0, le=10.0,
+                                   description="Measured intensity of the "
+                                   "transmission or presence on a 0-10 scale")
 
-    duration_minutes: int = Field(ge=1, le=1440)
+    duration_minutes: int = Field(..., ge=1, le=1440,
+                                  description="Total length of the "
+                                  "encounter in minutes (max 24 hours)")
 
-    witness_count: int = Field(ge=1, le=100)
+    witness_count: int = Field(..., ge=1, le=100, description="Number of "
+                               "individuals who observed the event")
 
-    message_received: Optional[str] = Field(None, max_length=500)
+    message_received: Optional[str] = Field(None, max_length=500,
+                                            description="Transcribed content "
+                                            "of any communication received")
 
-    is_verified: bool = False
+    is_verified: bool = Field(False, description="Official status flag "
+                              "indicating if the event has been authenticated")
 
     @model_validator(mode='after')
     def validation_custom(self):
