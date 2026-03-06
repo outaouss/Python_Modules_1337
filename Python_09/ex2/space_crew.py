@@ -9,7 +9,7 @@ class CrewRank(Enum):
     officer = "officer"
     lieutenant = "lieutenant"
     captain = "captain"
-    commander = "commander
+    commander = "commander"
 
 
 class CrewMember(BaseModel):
