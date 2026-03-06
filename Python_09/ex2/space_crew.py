@@ -113,18 +113,12 @@ def main() -> None:
                              specialization="Engineering",
                              years_experience=6, is_active=True)
 
-        # Invalid Officers With [ ALice Johnson ]
+        # Invalid Officer With [ ALice Johnson - John Smith]->(Invalid Ranks)
         invalid_officer = CrewMember(member_id="O-3657",
                                      name="carlos morgan",
                                      rank="officer", age=24,
                                      specialization="Engineering",
                                      years_experience=6, is_active=True)
-
-        invalid_officer_2 = CrewMember(member_id="O-3658",
-                                       name="frank lundy",
-                                       rank="officer", age=24,
-                                       specialization="Engineering",
-                                       years_experience=6, is_active=True)
 
         crew_members = [connor, smith, johnson]
 
@@ -149,7 +143,7 @@ def main() -> None:
         print("\n=========================================")
         print("Expected validation error:")
 
-        invalid_crews = [johnson, invalid_officer, invalid_officer_2]
+        invalid_crews = [johnson, invalid_officer, smith]
         invalid_mission = SpaceMission(mission_name="Moon Crew - 51",
                                        mission_id="M2025_MOON",
                                        destination="Moon", duration_days=650,

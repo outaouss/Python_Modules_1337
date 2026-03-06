@@ -49,7 +49,7 @@ class AlienContact(BaseModel):
         if not self.contact_id.startswith('AC'):
             raise ValueError("The Contact ID Must Start With 'AC'")
         if not self.is_verified:
-            raise ValueError(f"The Verification is {self.is_verified}")
+            raise ValueError("Refused : Inverified Contact !")
         if self.witness_count < 3:
             raise ValueError("Telepathic contact requires "
                              "at least 3 witnesses")
