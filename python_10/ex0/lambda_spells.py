@@ -21,7 +21,7 @@ def mage_stats(mages: List[Dict]) -> Dict:
     max_p = max(mages, key=lambda m: m['power'])['power']
     min_p = min(mages, key=lambda m: m['power'])['power']
 
-    total_power = sum(m['power'] for m in mages)
+    total_power = sum(map(lambda m: m['power'], mages))
     avg_p = round(total_power / len(mages), 2)
 
     return {
@@ -31,7 +31,7 @@ def mage_stats(mages: List[Dict]) -> Dict:
     }
 
 
-def main():
+def main() -> None:
     artifacts = [{'name': "Fire Staff", 'power': 92, 'type': "Legendary"},
                  {'name': "before Crystal Orb", 'power': 85, 'type': "Epic"}]
 
