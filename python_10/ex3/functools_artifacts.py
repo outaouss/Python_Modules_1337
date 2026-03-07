@@ -76,15 +76,14 @@ def main() -> None:
     print("Sum:", adder)
     print("Product:", multiply)
     print("Max:", max_test)
-    
+
     print("\nTesting memoized fibonacci...")
-    
+
     f_val = 10
     s_val = 15
     print(f"Fib({f_val}):", memoized_fibonacci(f_val))
     print(f"Fib({s_val}):", memoized_fibonacci(s_val))
-    
-    
+
 
 if __name__ == "__main__":
     try:
