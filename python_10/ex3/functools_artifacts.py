@@ -21,7 +21,7 @@ def spell_reducer(spells: List[int], operation: str) -> int:
     return reduce(ops[operation], spells)
 
 
-def partial_enchanter(base_enchantment: callable) -> Dict[str, Callable]:
+def partial_enchanter(base_enchantment: Callable) -> Dict[str, Callable]:
     if not callable(base_enchantment):
         raise ValueError(f"{base_enchantment} is not callable !")
 
@@ -34,6 +34,9 @@ def partial_enchanter(base_enchantment: callable) -> Dict[str, Callable]:
 
 @lru_cache(maxsize=None)
 def memoized_fibonacci(n: int) -> int:
+
+    if not isinstance(n, int):
+        raise ValueError("The Input Must Be int")
 
     if n <= 1:
         return n
@@ -60,3 +63,31 @@ def spell_dispatcher() -> Callable:
         return f"Multi-casting sequence: {', '.join(map(str, spell))}"
 
     return cast_spell
+
+
+def main() -> None:
+    print("\nTesting spell reducer...")
+    val = [10, 20, 30, 40]
+
+    adder = spell_reducer(val, 'add')
+    multiply = spell_reducer(val, 'multiply')
+    max_test = spell_reducer(val, 'max')
+
+    print("Sum:", adder)
+    print("Product:", multiply)
+    print("Max:", max_test)
+    
+    print("\nTesting memoized fibonacci...")
+    
+    f_val = 10
+    s_val = 15
+    print(f"Fib({f_val}):", memoized_fibonacci(f_val))
+    print(f"Fib({s_val}):", memoized_fibonacci(s_val))
+    
+    
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as e:
+        print("Error:", e)
